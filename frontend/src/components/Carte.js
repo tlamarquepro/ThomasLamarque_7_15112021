@@ -7,6 +7,7 @@ const Carte = () => {
   console.log(userData);
   return (
     <div className="card">
+      <div className="profile-job">{userData.job}</div>
       <div className="profile-picture">
         <img
           src={`../assets/photo/${userData.picture}`}
@@ -14,10 +15,13 @@ const Carte = () => {
           className="picture"
         />
       </div>
-      <div className="profile-name">{userData.lastname}</div>
-      <div className="profile-firstname">{userData.firstname}</div>
-      <div className="profile-job">{userData.job}</div>
-      <div className="profile-bio">{userData.bio}</div>
+      <div className="profile-name">
+        {userData.lastname} {userData.firstname}
+      </div>
+
+      <div className="profile-bio">
+        <div className="label">Biographie :</div><div className="bio">{userData.bio}</div>
+      </div>
     </div>
   );
 };

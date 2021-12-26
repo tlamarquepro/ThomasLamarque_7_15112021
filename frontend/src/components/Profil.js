@@ -8,9 +8,9 @@ const Profil = () => {
   const uid = useContext(UidContext);
   return (
     <div className="relative">
-      <Navigation />
       {uid ? (
         <div>
+          <Navigation />
           <img
             src="../assets/icon.svg"
             alt="logo groupomania"
