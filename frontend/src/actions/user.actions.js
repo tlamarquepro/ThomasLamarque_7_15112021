@@ -8,6 +8,7 @@ export const getUser = (uid) => {
       .get(`${process.env.REACT_APP_URL_API}api/user/${uid}`)
       .then((res) => {
         dispatch({ type: GET_USER, payload: res.data });
-      }).catch((err) => console.log(err);)
+      })
+      .catch((err) => console.log(err));
   };
 };
