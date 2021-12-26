@@ -1,0 +1,343 @@
+.container {
+  width: 100%;
+  height: 100vh;
+  margin: auto;
+  position: relative;
+}
+.container-logo {
+  display: flex;
+  position: relative;
+  height: 50px;
+}
+.logo-accueil {
+  width: 300px;
+  height: 50px;
+  position: absolute;
+  z-index: 2;
+  background-color: var(--primary);
+  margin-top: 1px;
+  margin-left: 30px;
+  border-radius: 50px;
+  padding: 0px 3px 0px 2px;
+}
+.bar {
+  background-color: var(--secondary);
+  position: absolute;
+  width: 99%;
+  height: 12px;
+  border-radius: 5px;
+  margin-top: 23px;
+  z-index: 1;
+  left: 50%;
+  transform: translate(-50%);
+}
+.logo-site {
+  width: 180px;
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%);
+}
+.logo-site-signup {
+  width: 80px;
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%);
+}
+.container-form {
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+  width: 400px;
+  height: 320px;
+  margin-top: 130px;
+  border-radius: 8px;
+  background-color: white;
+  border: 0px var(--secondary) solid;
+  box-shadow: 0px 1px 12px rgb(99, 99, 99);
+}
+.title {
+  font-family: "Lexend Deca", sans-serif;
+  font-size: 3em;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 10px;
+  user-select: none;
+}
+.title-signup {
+  font-family: "Lexend Deca", sans-serif;
+  font-size: 2em;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 10px;
+  user-select: none;
+  margin-top: -70px;
+}
+.form {
+  margin-top: 2px;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+.input {
+  margin: auto;
+  width: 70%;
+  height: 40px;
+  border-radius: 5px;
+  text-align: center;
+  border: 1px var(--secondary) solid;
+  user-select: none;
+  transition: 50ms 100ms ease-in-out;
+  font-family: "Noto Sans", sans-serif;
+}
+.input:hover {
+  transform: scale(102%);
+}
+.input:focus {
+  outline-style: none;
+}
+.id {
+  margin-bottom: 30px;
+}
+.ctnr-password {
+  display: flex;
+}
+.ctnr-password-signup {
+  position: relative;
+}
+.password {
+  margin-left: 14%;
+  width: 70.5%;
+}
+.password-signup {
+  width: 80.5%;
+  height: 26px;
+  margin-top: 16px;
+  margin-left: 9%;
+  margin-bottom: 16px;
+}
+.passwordConf-signup {
+  width: 80.5%;
+  height: 26px;
+  margin-left: 9%;
+  margin-bottom: 5px;
+}
+.eye-icon {
+  margin-top: 14px;
+  margin-right: 20px;
+  border: 0px;
+  user-select: none;
+}
+.eye-icon-signup {
+  margin-top: -16px;
+  margin-right: 2px;
+  border: 0px;
+  user-select: none;
+  right: 10px;
+  position: absolute;
+}
+.eye-icon:hover {
+  cursor: pointer;
+}
+.eye-icon-signup:hover {
+  cursor: pointer;
+}
+.fa-eye {
+  color: var(--secondary);
+}
+.sign-up {
+  font-family: "Roboto", sans-serif;
+  font-size: 0.8em;
+  text-align: center;
+  margin: 26px auto 0px auto;
+  width: 160px;
+}
+.sign-up:hover {
+  cursor: pointer;
+}
+.sign-in {
+  font-family: "Roboto", sans-serif;
+  font-size: 0.8em;
+  text-align: center;
+  margin: 20px auto 0px auto;
+  width: 160px;
+}
+.sign-in:hover {
+  cursor: pointer;
+}
+.form-signup {
+  display: flex;
+  flex-direction: column;
+}
+.cntr-name-button {
+  position: relative;
+}
+.last {
+  width: 50%;
+  height: 26px;
+  margin: 5px 0px 0px 20px;
+}
+.first {
+  width: 50%;
+  height: 26px;
+  margin: 16px 0px 0px 20px;
+}
+.btn-signin-submit {
+  width: 28%;
+  position: absolute;
+  top: 130px;
+  right: 8px;
+  height: 40px;
+  background-color: rgb(218, 180, 132);
+  border-radius: 8px;
+  border: none;
+  box-shadow: 0px 1px 12px rgb(206, 204, 204);
+  font-family: "Roboto", sans-serif;
+  font-size: 1em;
+}
+.btn-signin-submit:hover {
+  cursor: pointer;
+  transform: scale(105%);
+  transition: 60ms 80ms ease-in-out;
+}
+.btn-signin-submit:active {
+  transform: scale(95%);
+  transition: 60ms 80ms ease-in-out;
+}
+.btn-signup-submit {
+  width: 38%;
+  position: absolute;
+  top: 5px;
+  right: 11px;
+  height: 76px;
+  background-color: rgb(218, 180, 132);
+  border-radius: 8px;
+  border: none;
+  box-shadow: 0px 1px 12px rgb(206, 204, 204);
+  font-family: "Roboto", sans-serif;
+  font-size: 1.3em;
+}
+.btn-signup-submit:hover {
+  cursor: pointer;
+  transform: scale(105%);
+  transition: 60ms 80ms ease-in-out;
+}
+.btn-signup-submit:active {
+  transform: scale(95%);
+  transition: 60ms 80ms ease-in-out;
+}
+.ctnr-job-auth {
+  position: relative;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
+}
+.job {
+  width: 80%;
+  height: 26px;
+  margin: 20px auto 0px auto;
+}
+.auth {
+  width: 80%;
+  height: 26px;
+  margin: 16px auto 0px auto;
+}
+/* Erreur */
+.error {
+  font-family: "Roboto", sans-serif;
+  font-size: 0.6em;
+  color: rgb(202, 0, 0);
+  font-weight: bold;
+  width: 240px;
+  position: absolute;
+}
+.user-error {
+  /*login*/
+  margin-top: 50px;
+  right: 98px;
+}
+.pass-error {
+  /*login*/
+  margin-top: 124px;
+  right: 98px;
+}
+.lastname-error {
+  /*signup*/
+  margin-top: 6px;
+  right: 135px;
+}
+.firstname-error {
+  /*signup*/
+  margin-top: 6px;
+  right: 135px;
+}
+.job-error {
+  /*signup*/
+  margin-top: 14px;
+  right: 118px;
+}
+.username-error {
+  /*signup*/
+  margin-top: 108px;
+  right: 118px;
+}
+.password-error {
+  /*signup*/
+  margin-top: -10px;
+  right: 118px;
+}
+.ctrlPassword-error {
+  /*signup*/
+  margin-top: 0px;
+  right: 118px;
+}
+/**/
+/*Navigation*/
+.navigation {
+  display: flex;
+  justify-content: space-around;
+  width: 60%;
+  height: 30px;
+  margin: auto;
+}
+a {
+  text-decoration: none;
+  color: var(--secondary);
+}
+.nav {
+  width: 45%;
+  text-align: center;
+  font-family: "Roboto", sans-serif;
+  font-size: 1.2em;
+  border-radius: 4px;
+  
+}
+.nav:hover {
+  background-color: rgba(10, 10, 9, 0.11);
+  border: 2px rgba(10, 10, 9, 0.11) solid;
+}
+.active {
+  text-decoration: none;
+  border-bottom: 2px solid;
+  background-color: rgb(255, 246, 181);
+  transition: 200ms ease-in-out;
+}
+/**/
+/*Mur et profil*/
+.relative {
+  position: relative;
+}
+.backLogo {
+  position: absolute;
+  width: 54%;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 2;
+}
+/*Profil*/
+
+* {
+}
