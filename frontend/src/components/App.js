@@ -41,7 +41,7 @@ function App() {
         .catch((err) => console.log("Pas de token"));
     };
     fetchToken();
-    if (uid) dispatch(getUser(uid))
+    if (uid) dispatch(getUser(uid));
   }, [uid]);
 
   return (

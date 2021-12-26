@@ -19,7 +19,7 @@ module.exports = (sequelize, DataTypes) => {
     picture: {
       type: DataTypes.STRING,
       allowNull: true,
-      defaultValue: "user.webp",
+      defaultValue: "default.png",
     },
     username: {
       type: DataTypes.STRING,

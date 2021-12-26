@@ -9,7 +9,6 @@ const Profil = () => {
   return (
     <div className="relative">
       <Navigation />
-
       {uid ? (
         <div>
           <img

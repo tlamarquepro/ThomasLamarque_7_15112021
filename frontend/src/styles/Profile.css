@@ -1,0 +1,11 @@
+/*Profil*/
+.card {
+  width: 300px;
+  height: 300px;
+  border: 1px black solid;
+}
+.profile-picture {
+  width: 300px;
+  height: 300px;
+  border: 1px black solid;
+}
