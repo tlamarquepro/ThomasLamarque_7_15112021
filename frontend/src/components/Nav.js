@@ -11,10 +11,15 @@ const Navigation = () => {
   const elementComments = <FontAwesomeIcon icon={faComments} />;
   return (
     <div className="navigation">
-      <NavLink exact to="/wall" className='nav' activeClassName="active">
+      <NavLink exact="true" to="/wall" className="nav" activeclassname="active">
         {elementComments} Mur
       </NavLink>
-      <NavLink exact to="/profile" className='nav' activeClassName="active">
+      <NavLink
+        exact="true"
+        to="/profile"
+        className="nav"
+        activeclassname="active"
+      >
         {elementUser} Profil
       </NavLink>
     </div>
