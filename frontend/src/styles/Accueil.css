@@ -301,8 +301,11 @@
   justify-content: space-around;
   width: 60%;
   height: 30px;
-  margin: auto;
-  position: relative;
+  top: 0px;
+  left: 50%;
+  transform: translateX(-50%);
+  position: fixed;
+  z-index: 3;
 }
 a {
   text-decoration: none;
@@ -314,6 +317,7 @@ a {
   font-family: "Roboto", sans-serif;
   font-size: 1.2em;
   border-radius: 4px;
+  color: var(--secondary);
 }
 .nav:hover {
   background-color: rgba(10, 10, 9, 0.11);
