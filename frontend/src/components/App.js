@@ -11,19 +11,10 @@ import Profil from "./Profil/Profil";
 import { UidContext } from "./AppContext";
 import { getUser } from "../actions/user.actions";
 
-
 // Url API dotenv
 const urlAPI = process.env.REACT_APP_URL_API;
 
 function App() {
-  // Tous les posts
-  const [listOfPosts, setListofPosts] = useState([]);
-  useEffect(() => {
-    axios.get(`${urlAPI}api/posts`).then((response) => {
-      setListofPosts(response.data);
-    });
-  }, []);
-
   // Maintenir la connexion
   const [uid, setUid] = useState(null);
   const dispatch = useDispatch();
@@ -32,7 +23,7 @@ function App() {
     const fetchToken = async () => {
       axios({
         method: "get",
-        url: `${process.env.REACT_APP_URL_API}jwtid`,
+        url: `${urlAPI}jwtid`,
         withCredentials: true,
       })
         .then((res) => {
@@ -42,7 +33,7 @@ function App() {
     };
     fetchToken();
     if (uid) dispatch(getUser(uid));
-  }, [uid]);
+  }, [uid, dispatch]);
 
   return (
     <div className="App">

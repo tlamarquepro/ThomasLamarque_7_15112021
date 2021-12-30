@@ -1,0 +1,43 @@
+/* Conteneur principal */
+.wall-container {
+  margin-top: 40px;
+  display: flex;
+  justify-content: space-around;
+}
+* {
+  z-index: 2;
+}
+.border {
+  border: 2px var(--secondary) solid;
+  border-radius: 5px;
+}
+/* Premier conteneur */
+.Auchoix1-container {
+  background-color: white;
+  width: 28%;
+  height: 500px;
+}
+
+/* Deuxième conteneur (posts)*/
+.posts-container {
+  display: flex;
+  flex-direction: column;
+  width: 44%;
+}
+.newpost-container {
+  background-color: white;
+  width: 100%;
+  height: 240px;
+  margin-bottom: 16px;
+}
+.allPosts-container {
+  background-color: white;
+  width: 100%;
+}
+
+/* Troisième conteneur */
+.Auchoix2-container {
+  background-color: white;
+  width: 22%;
+  height: 500px;
+}
