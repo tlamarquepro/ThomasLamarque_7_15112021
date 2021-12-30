@@ -1,8 +1,10 @@
 import React, { useContext } from "react";
-import { UidContext } from "./AppContext";
-import Navigation from "./Nav";
+import Carte from "../Profil/Carte";
+import Accueil from "../Connexion/Accueil";
+import Navigation from "../Nav";
+import { UidContext } from "../AppContext";
 
-const Mur = () => {
+const Profil = () => {
   const uid = useContext(UidContext);
   return (
     <div className="relative">
@@ -14,21 +16,13 @@ const Mur = () => {
             alt="logo groupomania"
             className="backLogo"
           />
-          <h1>Mur</h1>
+          <Carte />
         </div>
       ) : (
-        <div>
-          <Navigation />
-          <img
-            src="../assets/icon.svg"
-            alt="logo groupomania"
-            className="backLogo"
-          />
-          <h1>Mur</h1>
-        </div>
+        <Accueil />
       )}
     </div>
   );
 };
 
-export default Mur;
+export default Profil;

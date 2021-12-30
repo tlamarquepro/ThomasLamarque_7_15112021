@@ -1,6 +1,7 @@
 import React from "react";
 import { useSelector } from "react-redux";
-import "../styles/Profile.css";
+import "../../styles/Profile.css";
+import FormImg from "./FormImg";
 
 const Carte = () => {
   const userData = useSelector((state) => state.userReducer);
@@ -17,11 +18,7 @@ const Carte = () => {
           className="picture"
         />
       </div>
-      <div className="add-picture profile-bio">
-        <div className="bio">
-          <button className="btn-addPicture">Ajouter une photo</button>
-        </div>
-      </div>
+      <FormImg />
       <div className="profile-job">{userData.job}</div>
       <div className="profile-bio">
         <div className="label">Biographie :</div>

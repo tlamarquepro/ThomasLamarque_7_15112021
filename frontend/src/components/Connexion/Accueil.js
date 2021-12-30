@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import "../styles/Accueil.css";
-import Connexion from "./Connexion";
+import "../../styles/Accueil.css";
+import Connexion from "../Connexion/Connexion";
 
 const Accueil = () => {
   const [connection, setConnection] = useState(true);

@@ -15,7 +15,7 @@
   margin-bottom: 20px;
 }
 .profile-picture {
-  width: calc(100vh * 9 / 16);
+  width: calc(100vh * 6 / 16);
   height: 200px;
   border: 1px black solid;
   margin: auto;

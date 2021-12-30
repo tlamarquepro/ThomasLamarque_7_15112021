@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "../styles/Accueil.css";
+import "../../styles/Accueil.css";
 import axios from "axios";
 
 // Import icones fontawesome

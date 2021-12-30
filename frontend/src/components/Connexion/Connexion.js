@@ -1,5 +1,5 @@
 import React from "react";
-import "../styles/Accueil.css";
+import "../../styles/Accueil.css";
 import FormConnexion from "./FormConnexion";
 import FormInscription from "./FormInscription";
 

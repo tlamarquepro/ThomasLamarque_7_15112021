@@ -5,9 +5,9 @@ import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 
 // Components
-import Accueil from "./Accueil";
-import Mur from "./Mur";
-import Profil from "./Profil";
+import Accueil from "./Connexion/Accueil";
+import Mur from "./Mur/Mur";
+import Profil from "./Profil/Profil";
 import { UidContext } from "./AppContext";
 import { getUser } from "../actions/user.actions";
 
