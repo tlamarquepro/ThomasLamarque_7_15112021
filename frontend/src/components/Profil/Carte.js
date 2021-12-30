@@ -13,7 +13,7 @@ const Carte = () => {
       </div>
       <div className="profile-picture">
         <img
-          src={`../assets/photo/${userData.picture}`}
+          src={`../uploads/profil/${userData.picture}`}
           alt="profil"
           className="picture"
         />
