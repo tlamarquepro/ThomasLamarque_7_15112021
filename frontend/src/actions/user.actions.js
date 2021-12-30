@@ -19,14 +19,14 @@ export const getUser = (uid) => {
 export const uploadPicture = (data, id) => {
   return (dispatch) => {
     return axios
-      .post(`${process.env.REACT_APP_API_URL}api/users/upload`, data)
+      .post(`${process.env.REACT_APP_URL_API}api/users/upload`, data)
       .then((res) => {
         if (res.data.errors) {
           dispatch({ type: GET_USER_ERRORS, payload: res.data.errors });
         } else {
           dispatch({ type: GET_USER_ERRORS, payload: "" });
           return axios
-            .get(`${process.env.REACT_APP_API_URL}api/users/${id}`)
+            .get(`${process.env.REACT_APP_URL_API}api/users/${id}`)
             .then((res) => {
               dispatch({ type: UPLOAD_PICTURE, payload: res.data.picture });
             });

@@ -5,7 +5,6 @@ import FormImg from "./FormImg";
 
 const Carte = () => {
   const userData = useSelector((state) => state.userReducer);
-  console.log(userData);
   return (
     <div className="card">
       <div className="profile-name">

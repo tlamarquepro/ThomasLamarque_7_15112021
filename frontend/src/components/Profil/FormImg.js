@@ -10,8 +10,8 @@ const FormImg = () => {
   const handlePicture = (e) => {
     e.preventDefault();
     const data = new FormData();
-    data.append("name", userData.username);
-    data.append("userId", userData.id);
+    data.append("username", userData.username);
+    data.append("id", userData.id);
     data.append("file", file);
 
     dispatch(uploadPicture(data, userData.id));
@@ -19,16 +19,17 @@ const FormImg = () => {
 
   return (
     <form action="" onSubmit={handlePicture} className="upload-pic">
-      <label htmlFor="file">Changer d'image</label>
+      <label htmlFor="file" className="inactive">Changer d'image</label>
       <input
+      className="input-addPicture"
         type="file"
         id="file"
         name="file"
         accept=".jpg, .jpeg, .png"
         onChange={(e) => setFile(e.target.files[0])}
       />
-      <br/>
-      <input type="submit" value="Envoyer" />
+      <br />
+      <button type="submit" className="btn-addPicture">Envoyer</button>
     </form>
   );
 };

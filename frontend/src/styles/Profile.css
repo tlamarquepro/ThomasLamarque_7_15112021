@@ -13,11 +13,12 @@
 .profile-job {
   font-size: 1.7em;
   margin-bottom: 20px;
+  font-weight: bold;
 }
 .profile-picture {
   width: calc(100vh * 6 / 16);
   height: 200px;
-  border: 1px black solid;
+  border: 3px var(--secondary) solid;
   margin: auto;
   z-index: 2;
   margin-bottom: 30px;
@@ -26,11 +27,13 @@
 .picture {
   width: 100%;
   height: 200px;
-  border-radius: 50px;
+  border-radius: 47px;
+  object-fit: cover;
 }
 .profile-name {
   font-size: 2.2em;
   margin-bottom: 30px;
+  font-weight: bold;
 }
 .profile-bio {
   text-align: left;
@@ -41,6 +44,7 @@
 .label {
   font-size: 1.2em;
   width: 15%;
+  font-weight: bold;
 }
 .bio {
   width: 70%;
@@ -50,10 +54,32 @@
   background-color: white;
   z-index: 2;
 }
-.add-picture {
+/* Ajout d'image */
 
+.upload-pic {
+  display: flex;
+  z-index: 2;
+  justify-content: center;
+  flex-direction: column;
+  margin-bottom: 50px;
+}
+.inactive {
+  pointer-events: none;
+  font-weight: bold;
+  font-size: 0.8em;
+  margin-bottom: 10px;
+}
+.input-addPicture {
+  margin: auto;
 }
 .btn-addPicture {
-    width: 100%;
-    height: 100%;
+  width: 10%;
+  margin: auto;
+  border: 1px var(--secondary) solid;
+  background-color: var(--btnok);
+  border-radius: 20px;
+  cursor: pointer;
+}
+.btn-addPicture:hover {
+  transform: scale(101%);
 }
