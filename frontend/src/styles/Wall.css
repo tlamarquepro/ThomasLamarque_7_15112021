@@ -7,6 +7,7 @@
 * {
   z-index: 2;
 }
+
 .border {
   border: 2px var(--secondary) solid;
   border-radius: 5px;
@@ -33,6 +34,15 @@
 .allPosts-container {
   background-color: white;
   width: 100%;
+  list-style-type: none;
+}
+ul,
+li {
+  list-style-type: none;
+}
+li {
+  margin-left: -40px;
+  margin-bottom: 10px;
 }
 
 /* Troisième conteneur */

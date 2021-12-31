@@ -50,9 +50,12 @@ const Mur = () => {
               <ul>
                 {!isEmpty(allPosts[0]) &&
                   allPosts.map((post) => {
-                    return <li><Posts postData={/></li>;
+                    return (
+                      <li>
+                        <Posts post={post} />
+                      </li>
+                    );
                   })}
-                
               </ul>
             </div>
             <Auchoix2 />
