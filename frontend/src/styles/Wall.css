@@ -59,7 +59,7 @@ li {
 .post-head {
   display: flex;
   margin-left: 10px;
-  font-size: 1.4em;
+  font-size: 1.2em;
 }
 .user-pic {
   border-radius: 60px;
@@ -67,8 +67,8 @@ li {
 }
 .post-profilePicture {
   object-fit: cover;
-  width: 30px;
-  height: 30px;
+  width: 20px;
+  height: 20px;
   border-radius: 60px;
   border: 2px var(--secondary) solid;
 }
@@ -78,22 +78,23 @@ li {
 .post-title {
   width: 80%;
   text-align: center;
-  border: 1px black solid;
   margin: auto;
-  font-size: 1.3em;
+  font-size: 1.4em;
   margin-bottom: 20px;
 }
 .post-img {
-  border: 1px black solid;
   width: 96%;
+  height: 240px;
   padding: 10px;
   margin: auto;
   margin-bottom: 20px;
 }
 .post-picture {
   width: 100%;
-  object-fit: cover;
+  object-fit: contain;
   height: 100%;
+  border: 2px grey solid;
+  background-color: black;
 }
 
 /* Troisième conteneur */

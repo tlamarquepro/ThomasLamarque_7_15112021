@@ -9,7 +9,6 @@ router.get("/", postController.getAllPosts);
 
 router.get("/byId/:id", postController.getPostById);
 
-router.post("/",upload.single("file"),
-uploadController.uploadPost, postController.createPost); // Création de post
+router.post("/",upload.single("file"), postController.createPost); // Création de post
 
 module.exports = router;
