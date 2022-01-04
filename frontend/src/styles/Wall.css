@@ -35,6 +35,9 @@
   background-color: white;
   width: 100%;
   list-style-type: none;
+  display: flex;
+  padding: 10px;
+  font-family: "Roboto", sans-serif;
 }
 ul,
 li {
@@ -43,6 +46,54 @@ li {
 li {
   margin-left: -40px;
   margin-bottom: 10px;
+}
+.spinner {
+  color: var(--secondary);
+}
+
+/*Les posts*/
+.post-container {
+  border: 1px black solid;
+  width: 100%;
+}
+.post-head {
+  display: flex;
+  margin-left: 10px;
+  font-size: 1.4em;
+}
+.user-pic {
+  border-radius: 60px;
+  margin-right: 10px;
+}
+.post-profilePicture {
+  object-fit: cover;
+  width: 30px;
+  height: 30px;
+  border-radius: 60px;
+  border: 2px var(--secondary) solid;
+}
+.user-name {
+  margin-top: 3px;
+}
+.post-title {
+  width: 80%;
+  text-align: center;
+  border: 1px black solid;
+  margin: auto;
+  font-size: 1.3em;
+  margin-bottom: 20px;
+}
+.post-img {
+  border: 1px black solid;
+  width: 96%;
+  padding: 10px;
+  margin: auto;
+  margin-bottom: 20px;
+}
+.post-picture {
+  width: 100%;
+  object-fit: cover;
+  height: 100%;
 }
 
 /* Troisième conteneur */

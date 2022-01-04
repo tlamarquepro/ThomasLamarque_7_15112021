@@ -1,22 +1,15 @@
 const express = require("express");
 const router = express.Router();
-const { Posts } = require("../models");
+const postController = require("../controllers/postController");
+const uploadController = require("../controllers/uploadController");
+const multer = require("multer");
+const upload = multer();
 
-router.get("/", async (req, res) => {
-  const listOfPosts = await Posts.findAll();
-  res.json(listOfPosts);
-});
+router.get("/", postController.getAllPosts);
 
-router.get("/byId/:id", async (req, res) => {
-  const id = req.params.id;
-  const post = await Posts.findByPk(id);
-  res.json(post);
-});
+router.get("/byId/:id", postController.getPostById);
 
-router.post("/", async (req, res) => {
-  const post = req.body;
-  await Posts.create(post);
-  res.json(post);
-});
+router.post("/",upload.single("file"),
+uploadController.uploadPost, postController.createPost); // Création de post
 
 module.exports = router;

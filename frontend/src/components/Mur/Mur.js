@@ -17,9 +17,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { getAllPosts } from "../../actions/post.actions";
 import { isEmpty } from "../Utils";
 
-// Url API dotenv
-const urlAPI = process.env.REACT_APP_URL_API;
-
 const Mur = () => {
   const uid = useContext(UidContext);
 
@@ -50,11 +47,7 @@ const Mur = () => {
               <ul>
                 {!isEmpty(allPosts[0]) &&
                   allPosts.map((post) => {
-                    return (
-                      <li>
-                        <Posts post={post} />
-                      </li>
-                    );
+                    return <Posts post={post} key={post.id} />;
                   })}
               </ul>
             </div>
