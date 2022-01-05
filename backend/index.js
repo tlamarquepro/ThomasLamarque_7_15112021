@@ -1,7 +1,6 @@
 const express = require("express");
 const cors = require("cors");
 const db = require("./models");
-const bodyParser = require("body-parser");
 const cookieParser = require("cookie-parser");
 require("dotenv").config({ path: "./config/.env" });
 
@@ -13,8 +12,8 @@ const usersRouter = require("./routes/Users");
 
 const app = express();
 
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 
 // CORS
