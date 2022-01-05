@@ -53,13 +53,13 @@ li {
 
 /*Les posts*/
 .post-container {
-  border: 1px black solid;
   width: 100%;
 }
 .post-head {
   display: flex;
   margin-left: 10px;
   font-size: 1.2em;
+  margin-bottom: 20px;
 }
 .user-pic {
   border-radius: 60px;
@@ -76,11 +76,17 @@ li {
   margin-top: 3px;
 }
 .post-title {
-  width: 80%;
+  width: 100%;
   text-align: center;
   margin: auto;
-  font-size: 1.4em;
+  font-size: 1.3em;
   margin-bottom: 20px;
+  background-color: var(--secondary);
+  border: 2px black solid;
+  border-right: none;
+  border-left: none;
+  border-radius: 5px;
+  color: white;
 }
 .post-img {
   width: 96%;
@@ -94,7 +100,14 @@ li {
   object-fit: contain;
   height: 100%;
   border: 2px grey solid;
+  border-radius: 5px;
   background-color: black;
+  margin-bottom: 20px;
+}
+.post-text {
+  width: 100%;
+  border-radius: 1px black solid;
+  height: 20px;
 }
 
 /* Troisième conteneur */

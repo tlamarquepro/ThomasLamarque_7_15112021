@@ -15,39 +15,42 @@ module.exports.getPostById = async (req, res) => {
 };
 
 module.exports.createPost = async (req, res) => {
-  try {
-    if (
-      req.file.detectedMimeType !== "image/jpg" &&
-      req.file.detectedMimeType !== "image/png" &&
-      req.file.detectedMimeType !== "image/jpeg"
-    ) {
-      res.status(200).send("Type de fichier incompatible");
-      throw err;
+  let fileName;
+  if (req.file !== null) {
+    try {
+      if (
+        req.file.detectedMimeType !== "image/jpg" &&
+        req.file.detectedMimeType !== "image/png" &&
+        req.file.detectedMimeType !== "image/jpeg"
+      ) {
+        res.status(200).send("Type de fichier incompatible");
+        throw err;
+      }
+      if (req.file.size > 500000) {
+        res.status(200).send("Fichier trop volumineux");
+        throw err;
+      }
+    } catch (err) {
+      return res.status(201).json({ error: err });
     }
-    if (req.file.size > 500000) {
-      res.status(200).send("Fichier trop volumineux");
-      throw err;
-    }
-  } catch (err) {
-    return res.status(201).json({ error: "" });
-  }
-  const listOfPosts = await Posts.findAll();
-  let lastElement;
-  const getPictureId = () => {
-    if (listOfPosts) {
-      return 1;
-    } else {
-      lastElement = listOfPosts[listOfPosts.length - 1].id + 1;
-      return lastElement;
-    }
-  };
-  const fileName = req.body.username + `.jpg`;
-  console.log(fileName);
+    const listOfPosts = await Posts.findAll();
+    let lastElement;
+    const getPictureId = () => {
+      if (!listOfPosts) {
+        return 1;
+      } else {
+        lastElement = listOfPosts[listOfPosts.length - 1].id + 1;
+        return lastElement;
+      }
+    };
+    fileName = req.body.username + getPictureId() + `.jpg`;
+    console.log(fileName);
 
-  await pipeline(
-    req.file.stream,
-    fs.createWriteStream(`../frontend/public/uploads/posts/${fileName}`)
-  );
+    await pipeline(
+      req.file.stream,
+      fs.createWriteStream(`../frontend/public/uploads/posts/${fileName}`)
+    );
+  }
 
   const { title, postText, username, picture, video } = req.body;
   await Posts.create({
