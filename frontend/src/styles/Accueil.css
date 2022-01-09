@@ -318,6 +318,7 @@ a {
   font-size: 1.2em;
   border-radius: 4px;
   color: var(--secondary);
+  cursor: pointer;
 }
 .nav:hover {
   background-color: rgba(10, 10, 9, 0.11);
