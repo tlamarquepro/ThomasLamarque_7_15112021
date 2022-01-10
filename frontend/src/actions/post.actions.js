@@ -1,7 +1,7 @@
 import axios from "axios";
 
 export const GET_ALLPOSTS = "GET_ALLPOSTS";
-export const POST_NEWPOST = "POST_NEWPOST";
+export const ADD_POST = "ADD_POST";
 
 export const getAllPosts = () => {
   return (dispatch) => {
@@ -14,13 +14,8 @@ export const getAllPosts = () => {
   };
 };
 
-export const postNewPost = () => {
+export const addPost = (data) => {
   return (dispatch) => {
-    return axios
-      .post(`${process.env.REACT_APP_URL_API}api/posts`)
-      .then((res) => {
-        dispatch({ type: POST_NEWPOST, payload: res.data });
-      })
-      .catch((err) => console.log(err));
+    return axios.post(`${process.env.REACT_APP_URL_API}api/posts`, data);
   };
 };

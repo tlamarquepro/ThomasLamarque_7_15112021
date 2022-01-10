@@ -50,7 +50,13 @@ li {
 .spinner {
   color: var(--secondary);
 }
+/*Formulaire newpost*/
+.newpost-title {
 
+}
+.newpost-text {
+  
+}
 /*Les posts*/
 .post-container {
   width: 100%;
@@ -108,7 +114,7 @@ li {
   width: 90%;
   height: 20px;
   margin-left: 2%;
-  font-size: 0.85em;
+  font-size: 1.2em;
 }
 
 /* Troisième conteneur */

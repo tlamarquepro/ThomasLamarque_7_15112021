@@ -36,7 +36,7 @@ module.exports.createPost = async (req, res) => {
     const listOfPosts = await Posts.findAll();
     let lastElement;
     const getPictureId = () => {
-      if (!listOfPosts) {
+      if (!listOfPosts[0]) {
         return 1;
       } else {
         lastElement = listOfPosts[listOfPosts.length - 1].id + 1;
@@ -52,13 +52,12 @@ module.exports.createPost = async (req, res) => {
     );
   }
 
-  const { title, postText, username, picture, video } = req.body;
+  const { title, postText, username } = req.body;
   await Posts.create({
     title: title,
     postText: postText,
     username: username,
     picture: fileName,
-    video: video,
   });
   res.json(req.body);
 };

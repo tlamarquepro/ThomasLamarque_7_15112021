@@ -6,8 +6,6 @@ import { isEmpty } from "../Utils";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSyncAlt } from "@fortawesome/free-solid-svg-icons";
 
-
-
 // Icone connexion
 const elementSpinner = (
   <FontAwesomeIcon icon={faSyncAlt} spin className="spinner" />
@@ -60,6 +58,7 @@ const Posts = ({ post }) => {
             </div>
           )}
           <div className="post-text">{post.postText}</div>
+          <div className="post-date">{post.createdAt}</div>
         </div>
       )}
     </li>
