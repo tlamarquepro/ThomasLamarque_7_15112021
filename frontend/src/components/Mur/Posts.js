@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
+import { isEmpty } from "../Utils";
 
 // Import icones fontawesome
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSyncAlt } from "@fortawesome/free-solid-svg-icons";
-import { useSelector } from "react-redux";
-import { isEmpty } from "../Utils";
+
+
 
 // Icone connexion
 const elementSpinner = (
@@ -14,7 +16,6 @@ const elementSpinner = (
 const Posts = ({ post }) => {
   const [isLoading, setIsLoading] = useState(true);
   const usersData = useSelector((state) => state.usersReducer);
-  const userData = useSelector((state) => state.userReducer);
   let userName = "";
 
   useEffect(() => {
