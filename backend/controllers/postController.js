@@ -52,12 +52,25 @@ module.exports.createPost = async (req, res) => {
     );
   }
 
-  const { title, postText, username } = req.body;
+  const { title, postText, username, UserId } = req.body;
   await Posts.create({
     title: title,
     postText: postText,
     username: username,
     picture: fileName,
+    UserId: UserId,
   });
   res.json(req.body);
+};
+
+module.exports.deletePost = async (req, res) => {
+  const postId = req.params.id;
+  console.log(postId);
+  await Posts.destroy({
+    where: {
+      id: postId,
+    },
+  });
+
+  res.json("Suppression effectuée !");
 };

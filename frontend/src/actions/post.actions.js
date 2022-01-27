@@ -19,3 +19,9 @@ export const addPost = (data) => {
     return axios.post(`${process.env.REACT_APP_URL_API}api/posts`, data);
   };
 };
+
+export const deletePost = (postId) => {
+  return (dispatch) => {
+    return axios.delete(`${process.env.REACT_APP_URL_API}api/posts/byId/${postId}`);
+  };
+};

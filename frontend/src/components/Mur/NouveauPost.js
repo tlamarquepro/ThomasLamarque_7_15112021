@@ -34,7 +34,7 @@ const NouveauPost = () => {
       data.append("postText", postText);
       data.append("username", userData.username);
       data.append("file", file);
-
+      data.append("UserId", userData.id);
       await dispatch(addPost(data));
       dispatch(getAllPosts());
     } else {
@@ -54,7 +54,7 @@ const NouveauPost = () => {
           <input
             id="title"
             type="text"
-            className="newpost-title"
+            className="newpost-title input"
             placeholder="Titre"
             onChange={(e) => setTitle(e.target.value)}
             value={title}

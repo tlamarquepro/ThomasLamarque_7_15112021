@@ -1,19 +1,24 @@
 import React, { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { isEmpty } from "../Utils";
 
 // Import icones fontawesome
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faSyncAlt } from "@fortawesome/free-solid-svg-icons";
+import { faSyncAlt, faTrashAlt } from "@fortawesome/free-solid-svg-icons";
 
-// Icone connexion
+// Icone spinner
 const elementSpinner = (
   <FontAwesomeIcon icon={faSyncAlt} spin className="spinner" />
 );
 
+// Icone supression post
+const elementDelete = <FontAwesomeIcon icon={faTrashAlt} />;
+
 const Posts = ({ post }) => {
   const [isLoading, setIsLoading] = useState(true);
   const usersData = useSelector((state) => state.usersReducer);
+  const userData = useSelector((state) => state.userReducer);
+  const dispatch = useDispatch();
   let userName = "";
 
   useEffect(() => {
@@ -27,6 +32,12 @@ const Posts = ({ post }) => {
         return usersData[i].picture;
       }
     }
+  };
+
+  const deletePost = async () => {
+    console.log(post.id);
+    const postId = post.id;
+    await dispatch(deletePost(data))
   };
 
   return (
@@ -59,6 +70,13 @@ const Posts = ({ post }) => {
           )}
           <div className="post-text">{post.postText}</div>
           <div className="post-date">{post.createdAt}</div>
+          {post.UserId === userData.id ? (
+            <div className="post-delete" onClick={deletePost}>
+              {elementDelete}
+            </div>
+          ) : (
+            <div></div>
+          )}
         </div>
       )}
     </li>

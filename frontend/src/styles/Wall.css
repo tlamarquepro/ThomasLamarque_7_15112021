@@ -52,10 +52,16 @@ li {
 }
 /*Formulaire newpost*/
 .newpost-title {
-
+  width: 80%;
+  margin: auto;
+  margin-top: 10px;
+  margin-bottom: 16px;
+  text-align: center;
 }
 .newpost-text {
-  
+  width: 80%;
+  margin: auto;
+  margin-bottom: 12px;
 }
 /*Les posts*/
 .post-container {
@@ -115,6 +121,14 @@ li {
   height: 20px;
   margin-left: 2%;
   font-size: 1.2em;
+}
+.post-date {
+  margin-top: ;
+}
+.post-delete {
+  color: red;
+  cursor: pointer;
+  text-align: right;
 }
 
 /* Troisième conteneur */

@@ -46,7 +46,7 @@ const Mur = () => {
               <NouveauPost />
               <ul>
                 {!isEmpty(allPosts[0]) &&
-                  allPosts.map((post) => {
+                  allPosts.slice(0).reverse().map((post) => {
                     return <Posts post={post} key={post.id} />;
                   })}
               </ul>
