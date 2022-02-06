@@ -11,6 +11,9 @@ router.get("/byId/:id", postController.getPostById); // Afficher un post avec l'
 
 router.delete("/byId/:id", checkUser, postController.deletePost); // Supprimer un post avec l'ID
 
+router.put("/postTitle", checkUser, postController.updateTitlePost);
+
+router.put("/postText", checkUser, postController.updateTextPost);
 
 router.post("/",upload.single("file"), postController.createPost); // Création de post
 

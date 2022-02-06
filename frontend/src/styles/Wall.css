@@ -123,10 +123,17 @@ li {
   font-size: 1.2em;
 }
 .post-date {
-  margin-top: ;
+  position: absolute;
+  margin-top: 44px;
+  right: 28%;
 }
 .post-delete {
   color: red;
+  cursor: pointer;
+  text-align: right;
+}
+.comment-icon {
+  color: var(--secondary);
   cursor: pointer;
   text-align: right;
 }

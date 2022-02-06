@@ -4,7 +4,8 @@ import { isEmpty } from "../Utils";
 
 // Import icones fontawesome
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faSyncAlt, faTrashAlt } from "@fortawesome/free-solid-svg-icons";
+import { faSyncAlt, faTrashAlt, faCommentAlt } from "@fortawesome/free-solid-svg-icons";
+import { deletePost, getAllPosts } from "../../actions/post.actions";
 
 // Icone spinner
 const elementSpinner = (
@@ -14,12 +15,17 @@ const elementSpinner = (
 // Icone supression post
 const elementDelete = <FontAwesomeIcon icon={faTrashAlt} />;
 
+// Icone supression post
+const elementComments = <FontAwesomeIcon icon={faCommentAlt} />;
+
 const Posts = ({ post }) => {
   const [isLoading, setIsLoading] = useState(true);
+  const [isOpen, setIsOpen] = useState(true);
   const usersData = useSelector((state) => state.usersReducer);
   const userData = useSelector((state) => state.userReducer);
   const dispatch = useDispatch();
   let userName = "";
+  let date = "";
 
   useEffect(() => {
     !isEmpty(usersData[0]) && setIsLoading(false);
@@ -34,10 +40,10 @@ const Posts = ({ post }) => {
     }
   };
 
-  const deletePost = async () => {
-    console.log(post.id);
+  const delPost = async () => {
     const postId = post.id;
-    await dispatch(deletePost(data))
+    await dispatch(deletePost(postId));
+    dispatch(getAllPosts());
   };
 
   return (
@@ -69,14 +75,18 @@ const Posts = ({ post }) => {
             </div>
           )}
           <div className="post-text">{post.postText}</div>
-          <div className="post-date">{post.createdAt}</div>
+          <div className="post-date">
+            {date = post.createdAt.substr(0, 10)} {date} à {post.createdAt.substr(11, 8)}
+          </div>
           {post.UserId === userData.id ? (
-            <div className="post-delete" onClick={deletePost}>
+            <div className="post-delete" onClick={delPost}>
               {elementDelete}
             </div>
           ) : (
             <div></div>
           )}
+          <div className="comment-icon">{elementComments}</div>
+          {isOpen ? (<div>comments</div>):(<div>no comment</div>)}
         </div>
       )}
     </li>

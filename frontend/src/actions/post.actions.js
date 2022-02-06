@@ -25,3 +25,5 @@ export const deletePost = (postId) => {
     return axios.delete(`${process.env.REACT_APP_URL_API}api/posts/byId/${postId}`);
   };
 };
+
+
