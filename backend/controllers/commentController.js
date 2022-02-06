@@ -3,67 +3,28 @@ const fs = require("fs");
 const { promisify } = require("util");
 const pipeline = promisify(require("stream").pipeline);
 
-module.exports.getAllPosts = async (req, res) => {
-  const listOfPosts = await Posts.findAll();
-  res.json(listOfPosts);
+module.exports.getAllComments = async (req, res) => {
+  const listOfComments = await Comments.findAll();
+  res.json(listOfComments);
 };
 
-module.exports.getPostById = async (req, res) => {
-  const id = req.params.id;
-  const post = await Posts.findByPk(id);
-  res.json(post);
+module.exports.getCommentById = async (req, res) => {
+  const postId = req.params.postId;
+  const comments = await Comments.findAll({ where: { PostId: postId } });
+  res.json(comments);
 };
 
-module.exports.createPost = async (req, res) => {
-  let fileName;
-  if (req.file !== null) {
-    try {
-      if (
-        req.file.detectedMimeType !== "image/jpg" &&
-        req.file.detectedMimeType !== "image/png" &&
-        req.file.detectedMimeType !== "image/jpeg"
-      ) {
-        res.status(200).send("Type de fichier incompatible");
-        throw err;
-      }
-      if (req.file.size > 500000) {
-        res.status(200).send("Fichier trop volumineux");
-        throw err;
-      }
-    } catch (err) {
-      return res.status(201).json({ error: err });
-    }
-    const listOfPosts = await Posts.findAll();
-    let lastElement;
-    const getPictureId = () => {
-      if (!listOfPosts[0]) {
-        return 1;
-      } else {
-        lastElement = listOfPosts[listOfPosts.length - 1].id + 1;
-        return lastElement;
-      }
-    };
-    fileName = req.body.username + getPictureId() + `.jpg`;
-    console.log(fileName);
-
-    await pipeline(
-      req.file.stream,
-      fs.createWriteStream(`../frontend/public/uploads/posts/${fileName}`)
-    );
-  }
-
-  const { title, postText, username, UserId } = req.body;
-  await Posts.create({
-    title: title,
-    postText: postText,
-    username: username,
-    picture: fileName,
-    UserId: UserId,
+module.exports.createComment = async (req, res) => {
+  const { postId, commentBody, picture } = req.body;
+  await Comments.create({
+    postId: postId,
+    commentBody: commentBody,
+    picture: picture,
   });
   res.json(req.body);
 };
 
-module.exports.deletePost = async (req, res) => {
+module.exports.deleteComment = async (req, res) => {
   const postId = req.params.id;
   console.log(postId);
   await Posts.destroy({
@@ -75,14 +36,8 @@ module.exports.deletePost = async (req, res) => {
   res.json("Suppression effectuée !");
 };
 
-module.exports.updateTitlePost = async (req, res) => {
+module.exports.updateComment = async (req, res) => {
   const { newTitle, id } = req.body;
   await Posts.update({ title: newTitle }, { where: { id: id } });
   res.json(newTitle);
-};
-
-module.exports.updateTextPost = async (req, res) => {
-  const { newText, id } = req.body;
-  await Posts.update({ postText: newText }, { where: { id: id } });
-  res.json(newText);
 };

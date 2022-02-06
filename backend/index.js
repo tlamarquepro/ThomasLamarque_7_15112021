@@ -7,8 +7,6 @@ require("dotenv").config({ path: "./config/.env" });
 // Middlewares
 const { checkUser, requireAuth } = require("./middlewares/authMiddleware");
 
-const postRouter = require("./routes/Posts");
-const usersRouter = require("./routes/Users");
 
 const app = express();
 
@@ -36,8 +34,13 @@ app.get("/jwtid", requireAuth, (req, res) => {
 });
 
 // Routes
+const postRouter = require("./routes/Posts");
+const usersRouter = require("./routes/Users");
+const commentRouter = require("./routes/Comments");
+
 app.use("/api/posts", postRouter);
 app.use("/api/users", usersRouter);
+app.use("/api/comments", commentRouter);
 
 db.sequelize.sync().then(() => {
   app.listen(3001, () => {

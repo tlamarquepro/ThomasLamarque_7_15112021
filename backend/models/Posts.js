@@ -20,12 +20,10 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.STRING,
       allowNull: true,
     },
+    UserId: {
+      type: DataTypes.STRING,
+      allowNull: true,
+    },
   });
-
-  Posts.associate = (models) => {
-    Posts.hasMany(models.Comments, {
-      onDelete: "cascade",
-    });
-  };
   return Posts;
 };
