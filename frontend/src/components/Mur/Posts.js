@@ -4,7 +4,11 @@ import { isEmpty } from "../Utils";
 
 // Import icones fontawesome
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faSyncAlt, faTrashAlt, faCommentAlt } from "@fortawesome/free-solid-svg-icons";
+import {
+  faSyncAlt,
+  faTrashAlt,
+  faCommentAlt,
+} from "@fortawesome/free-solid-svg-icons";
 import { deletePost, getAllPosts } from "../../actions/post.actions";
 
 // Icone spinner
@@ -23,6 +27,7 @@ const Posts = ({ post }) => {
   const [isOpen, setIsOpen] = useState(true);
   const usersData = useSelector((state) => state.usersReducer);
   const userData = useSelector((state) => state.userReducer);
+  const allComments = useSelector((state) => state.postReducer);
   const dispatch = useDispatch();
   let userName = "";
   let date = "";
@@ -76,7 +81,8 @@ const Posts = ({ post }) => {
           )}
           <div className="post-text">{post.postText}</div>
           <div className="post-date">
-            {date = post.createdAt.substr(0, 10)} {date} à {post.createdAt.substr(11, 8)}
+            {(date = post.createdAt.substr(0, 10))} {date} à{" "}
+            {post.createdAt.substr(11, 8)}
           </div>
           {post.UserId === userData.id ? (
             <div className="post-delete" onClick={delPost}>
@@ -86,7 +92,19 @@ const Posts = ({ post }) => {
             <div></div>
           )}
           <div className="comment-icon">{elementComments}</div>
-          {isOpen ? (<div>comments</div>):(<div>no comment</div>)}
+          {isOpen ? (
+            <div className="post-comment">
+              {!isEmpty(allPosts[0]) &&
+                allPosts
+                  .slice(0)
+                  .reverse()
+                  .map((post) => {
+                    return <Posts post={post} key={post.id} />;
+                  })}
+            </div>
+          ) : (
+            <div>no comment</div>
+          )}
         </div>
       )}
     </li>

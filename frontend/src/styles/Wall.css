@@ -137,6 +137,10 @@ li {
   cursor: pointer;
   text-align: right;
 }
+.post-comment {
+  border: 1px black solid;
+  width: 100%;
+}
 
 /* Troisième conteneur */
 .Auchoix2-container {
