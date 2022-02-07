@@ -15,13 +15,13 @@ module.exports.getCommentById = async (req, res) => {
 };
 
 module.exports.createComment = async (req, res) => {
-  const { postId, commentBody, picture } = req.body;
-  await Comments.create({
-    postId: postId,
-    commentBody: commentBody,
-    picture: picture,
-  });
-  res.json(req.body);
+  console.log("yes !", res.locals.user.username);
+  const comment = req.body.comment;
+  const username = req.user.username;
+  comment.username = username;
+  console.log(comment);
+  await Comments.create(comment);
+  res.json(comment);
 };
 
 module.exports.deleteComment = async (req, res) => {

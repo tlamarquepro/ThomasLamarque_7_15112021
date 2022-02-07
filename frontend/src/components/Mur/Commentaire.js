@@ -1,9 +1,9 @@
 import React from 'react';
 
-const Commentaire = ({ comment }) => {
+const Commentaire = ({ comment, post }) => {
     return (
         <div>
-            {comment.id}
+            {comment.postId == post.id ? (<div className='comment-body'>{comment.commentBody}</div>):(<div></div>)}
         </div>
     );
 };

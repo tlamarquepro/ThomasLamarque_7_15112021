@@ -11,6 +11,7 @@ module.exports.checkUser = (req, res, next) => {
       } else {
         let user = await Users.findByPk(decodedToken.id);
         res.locals.user = user;
+        req.user1 = user;
         next();
       }
     });
@@ -32,6 +33,6 @@ module.exports.requireAuth = (req, res, next) => {
       }
     });
   } else {
-    console.log('Pas de token !');
+    console.log("Pas de token !");
   }
 };

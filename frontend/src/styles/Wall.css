@@ -144,6 +144,22 @@ li {
   border: 1px black solid;
   width: 100%;
 }
+.input-comment {
+  position: relative;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  margin-top: 20px;
+  border: 1px black solid;
+  resize: none;
+}
+.comment-body {
+  border: 1px black solid;
+  padding: 10px;
+  margin-left: 10%;
+  width: 80%;
+  margin-bottom: 10px;
+  border-radius: 10px;
+}
 
 /* Troisième conteneur */
 .Auchoix2-container {

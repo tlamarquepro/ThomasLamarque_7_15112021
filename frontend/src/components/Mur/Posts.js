@@ -11,6 +11,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { deletePost, getAllPosts } from "../../actions/post.actions";
 import Commentaire from "./Commentaire";
+import { addComment } from "../../actions/comment.actions";
 
 // Icone spinner
 const elementSpinner = (
@@ -26,6 +27,7 @@ const elementComments = <FontAwesomeIcon icon={faCommentAlt} />;
 const Posts = ({ post }) => {
   const [isLoading, setIsLoading] = useState(true);
   const [isOpen, setIsOpen] = useState(true);
+  const [comment, setComment] = useState("");
   const usersData = useSelector((state) => state.usersReducer);
   const userData = useSelector((state) => state.userReducer);
   const allComments = useSelector((state) => state.commentReducer);
@@ -49,6 +51,20 @@ const Posts = ({ post }) => {
     const postId = post.id;
     await dispatch(deletePost(postId));
     dispatch(getAllPosts());
+  };
+
+  const toggleComment = () => {
+    if (isOpen === true) {
+      setIsOpen(false);
+    } else if (isOpen === false) {
+      setIsOpen(true);
+    }
+  };
+
+  const handleComment = async () => {
+    if (comment.trim()) {
+      await dispatch(addComment({ comment: comment.trim() }));
+    }
   };
 
   return (
@@ -81,8 +97,7 @@ const Posts = ({ post }) => {
           )}
           <div className="post-text">{post.postText}</div>
           <div className="post-date">
-            {(post.createdAt.substr(0, 10))}  à{" "}
-            {post.createdAt.substr(11, 8)}
+            {post.createdAt.substr(0, 10)} à {post.createdAt.substr(11, 8)}
           </div>
           {post.UserId === userData.id ? (
             <div className="post-delete" onClick={delPost}>
@@ -91,12 +106,32 @@ const Posts = ({ post }) => {
           ) : (
             <div></div>
           )}
-          <div className="comment-icon">{elementComments}</div>
+          <div className="comment-icon" onClick={toggleComment}>
+            {elementComments}
+          </div>
           {isOpen ? (
-            !isEmpty(allComments[0]) &&
-            allComments.map((comment) => {
-              return <Commentaire comment={comment} key={comment.id} />;
-            })
+            <>
+              <textarea
+                className="input-comment"
+                rows="3"
+                cols="60"
+                onChange={(e) => setComment(e.target.value)}
+                value={comment}
+              ></textarea>
+              <button onClick={handleComment}>Commenter</button>
+              <div>
+                {!isEmpty(allComments[0]) &&
+                  allComments.map((comment) => {
+                    return (
+                      <Commentaire
+                        comment={comment}
+                        key={comment.id}
+                        post={post}
+                      />
+                    );
+                  })}
+              </div>
+            </>
           ) : (
             <div>no comment</div>
           )}
