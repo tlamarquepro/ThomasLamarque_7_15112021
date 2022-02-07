@@ -66,6 +66,7 @@ li {
 /*Les posts*/
 .post-container {
   width: 100%;
+  position: relative;
 }
 .post-head {
   display: flex;
@@ -124,8 +125,10 @@ li {
 }
 .post-date {
   position: absolute;
-  margin-top: 44px;
-  right: 28%;
+  top: 10px;
+  right: 2%;
+  text-align: right;
+  font-weight: bold;
 }
 .post-delete {
   color: red;

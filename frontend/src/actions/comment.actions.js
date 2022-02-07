@@ -14,13 +14,13 @@ export const getAllComments = () => {
   };
 };
 
-export const addPost = (data) => {
+export const addComment = (data) => {
   return (dispatch) => {
     return axios.post(`${process.env.REACT_APP_URL_API}api/comments`, data);
   };
 };
 
-export const deletePost = (postId) => {
+export const deleteComment = (postId) => {
   return (dispatch) => {
     return axios.delete(`${process.env.REACT_APP_URL_API}api/comments/byId/${postId}`);
   };

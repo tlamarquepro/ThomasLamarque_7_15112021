@@ -1,4 +1,4 @@
-import { GET_ALLCOMMENTS } from "../actions/post.actions";
+import { GET_ALLCOMMENTS } from "../actions/comment.actions";
 
 const initialState = {};
 

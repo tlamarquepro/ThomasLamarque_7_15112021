@@ -31,7 +31,6 @@ const Posts = ({ post }) => {
   const allComments = useSelector((state) => state.commentReducer);
   const dispatch = useDispatch();
   let userName = "";
-  let date = "";
 
   useEffect(() => {
     !isEmpty(usersData[0]) && setIsLoading(false);
@@ -82,7 +81,7 @@ const Posts = ({ post }) => {
           )}
           <div className="post-text">{post.postText}</div>
           <div className="post-date">
-            {(date = post.createdAt.substr(0, 10))} {date} à{" "}
+            {(post.createdAt.substr(0, 10))}  à{" "}
             {post.createdAt.substr(11, 8)}
           </div>
           {post.UserId === userData.id ? (
@@ -94,12 +93,10 @@ const Posts = ({ post }) => {
           )}
           <div className="comment-icon">{elementComments}</div>
           {isOpen ? (
-            <div className="post-comment">
-              {!isEmpty(allComments[0]) &&
-                allComments.map((comment) => {
-                  return <Commentaire comment={comment} key={comment.id} />;
-                })}
-            </div>
+            !isEmpty(allComments[0]) &&
+            allComments.map((comment) => {
+              return <Commentaire comment={comment} key={comment.id} />;
+            })
           ) : (
             <div>no comment</div>
           )}
