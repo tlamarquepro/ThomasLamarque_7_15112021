@@ -10,6 +10,7 @@ import {
   faCommentAlt,
 } from "@fortawesome/free-solid-svg-icons";
 import { deletePost, getAllPosts } from "../../actions/post.actions";
+import Commentaire from "./Commentaire";
 
 // Icone spinner
 const elementSpinner = (
@@ -27,7 +28,7 @@ const Posts = ({ post }) => {
   const [isOpen, setIsOpen] = useState(true);
   const usersData = useSelector((state) => state.usersReducer);
   const userData = useSelector((state) => state.userReducer);
-  const allComments = useSelector((state) => state.postReducer);
+  const allComments = useSelector((state) => state.commentReducer);
   const dispatch = useDispatch();
   let userName = "";
   let date = "";
@@ -94,13 +95,10 @@ const Posts = ({ post }) => {
           <div className="comment-icon">{elementComments}</div>
           {isOpen ? (
             <div className="post-comment">
-              {!isEmpty(allPosts[0]) &&
-                allPosts
-                  .slice(0)
-                  .reverse()
-                  .map((post) => {
-                    return <Posts post={post} key={post.id} />;
-                  })}
+              {!isEmpty(allComments[0]) &&
+                allComments.map((comment) => {
+                  return <Commentaire comment={comment} key={comment.id} />;
+                })}
             </div>
           ) : (
             <div>no comment</div>
