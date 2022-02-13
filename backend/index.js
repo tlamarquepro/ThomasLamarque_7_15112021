@@ -7,7 +7,6 @@ require("dotenv").config({ path: "./config/.env" });
 // Middlewares
 const { checkUser, requireAuth } = require("./middlewares/authMiddleware");
 
-
 const app = express();
 
 app.use(express.json());

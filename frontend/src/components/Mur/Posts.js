@@ -10,8 +10,8 @@ import {
   faCommentAlt,
 } from "@fortawesome/free-solid-svg-icons";
 import { deletePost, getAllPosts } from "../../actions/post.actions";
+import { getAllComments } from "../../actions/comment.actions";
 import Commentaire from "./Commentaire";
-import { addComment } from "../../actions/comment.actions";
 
 // Icone spinner
 const elementSpinner = (
@@ -27,12 +27,14 @@ const elementComments = <FontAwesomeIcon icon={faCommentAlt} />;
 const Posts = ({ post }) => {
   const [isLoading, setIsLoading] = useState(true);
   const [isOpen, setIsOpen] = useState(true);
-  const [comment, setComment] = useState("");
+  const [Confirm, setConfirm] = useState(false);
   const usersData = useSelector((state) => state.usersReducer);
   const userData = useSelector((state) => state.userReducer);
   const allComments = useSelector((state) => state.commentReducer);
   const dispatch = useDispatch();
   let userName = "";
+  let hour = post.createdAt.substr(11, 2);
+  hour = parseInt(hour) + 1;
 
   useEffect(() => {
     !isEmpty(usersData[0]) && setIsLoading(false);
@@ -47,6 +49,14 @@ const Posts = ({ post }) => {
     }
   };
 
+  const showConfirm = () => {
+    setConfirm(true);
+  };
+
+  const delConfirm = () => {
+    setConfirm(false);
+  };
+
   const delPost = async () => {
     const postId = post.id;
     await dispatch(deletePost(postId));
@@ -54,17 +64,15 @@ const Posts = ({ post }) => {
   };
 
   const toggleComment = () => {
-    if (isOpen === true) {
+    if (isOpen) {
       setIsOpen(false);
-    } else if (isOpen === false) {
+    } else if (!isOpen) {
       setIsOpen(true);
     }
   };
 
-  const handleComment = async () => {
-    if (comment.trim()) {
-      await dispatch(addComment({ comment: comment.trim() }));
-    }
+  const addComment = async () => {
+    dispatch(getAllComments);
   };
 
   return (
@@ -97,12 +105,24 @@ const Posts = ({ post }) => {
           )}
           <div className="post-text">{post.postText}</div>
           <div className="post-date">
-            {post.createdAt.substr(0, 10)} à {post.createdAt.substr(11, 8)}
+            {post.createdAt.substr(0, 10)} à{" "}
+            {hour + post.createdAt.substr(13, 8)}
           </div>
           {post.UserId === userData.id ? (
-            <div className="post-delete" onClick={delPost}>
-              {elementDelete}
-            </div>
+            <>
+              <div className="post-delete" onClick={showConfirm}>
+                {elementDelete}
+              </div>
+              {Confirm ? (
+                <div className="post-confirm">
+                  <label>Supprimer ?</label>
+                  <button onClick={delPost}>Oui</button>
+                  <button onClick={delConfirm}>Non</button>
+                </div>
+              ) : (
+                <div></div>
+              )}
+            </>
           ) : (
             <div></div>
           )}
@@ -110,28 +130,12 @@ const Posts = ({ post }) => {
             {elementComments}
           </div>
           {isOpen ? (
-            <>
-              <textarea
-                className="input-comment"
-                rows="3"
-                cols="60"
-                onChange={(e) => setComment(e.target.value)}
-                value={comment}
-              ></textarea>
-              <button onClick={handleComment}>Commenter</button>
-              <div>
-                {!isEmpty(allComments[0]) &&
-                  allComments.map((comment) => {
-                    return (
-                      <Commentaire
-                        comment={comment}
-                        key={comment.id}
-                        post={post}
-                      />
-                    );
-                  })}
-              </div>
-            </>
+            !isEmpty(allComments[0]) &&
+            allComments.map((comment) => {
+              return (
+                <Commentaire comment={comment} post={post} key={comment.id} />
+              );
+            })
           ) : (
             <div>no comment</div>
           )}
