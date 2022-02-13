@@ -8,9 +8,9 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.STRING,
       allowNull: false,
     },
-    picture: {
+    username: {
       type: DataTypes.STRING,
-      allowNull: true,
+      allowNull: false,
     },
   });
 

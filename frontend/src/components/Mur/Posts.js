@@ -105,8 +105,8 @@ const Posts = ({ post }) => {
           )}
           <div className="post-text">{post.postText}</div>
           <div className="post-date">
-            {post.createdAt.substr(0, 10)} à{" "}
-            {hour + post.createdAt.substr(13, 8)}
+            Posté le {post.createdAt.substr(0, 10)} à{" "}
+            {hour + post.createdAt.substr(13, 6)}
           </div>
           {post.UserId === userData.id ? (
             <>

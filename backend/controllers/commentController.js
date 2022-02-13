@@ -15,11 +15,11 @@ module.exports.getCommentById = async (req, res) => {
 };
 
 module.exports.createComment = async (req, res) => {
-  const { postId, commentBody, picture } = req.body;
+  const { postId, commentBody, username } = req.body;
   await Comments.create({
     postId: postId,
     commentBody: commentBody,
-    picture: picture,
+    username: username,
   });
   res.json(req.body);
 };
