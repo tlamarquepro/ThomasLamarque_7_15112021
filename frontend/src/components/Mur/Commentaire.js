@@ -5,7 +5,7 @@ import { useSelector } from "react-redux";
 const Commentaire = ({ comment, post }) => {
   const usersData = useSelector((state) => state.usersReducer);
   let hour = comment.createdAt.substr(11, 2);
-  hour = parseInt(hour) + 1;
+  hour = parseInt(hour) <= 22 ? (hour = parseInt(hour) + 1):(hour = "00");
   let commentUserLastname = "";
   let commentUserFirstname = "";
   let commentUserPicture = "";

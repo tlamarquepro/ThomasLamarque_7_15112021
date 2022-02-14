@@ -136,7 +136,7 @@ li {
   width: 12px;
   margin-left: 98%;
   position: absolute;
-  top: -6px;
+  bottom: 0px;
 }
 .post-confirm {
   width: 50%;
@@ -146,8 +146,10 @@ li {
 .comment-icon {
   color: var(--secondary);
   cursor: pointer;
-  width: 10px;
-  margin-left: 98%;
+  width: 20px;
+  margin-left: 92%;
+  display: flex;
+  justify-content: space-between;
 }
 .container-input {
   display: flex;
@@ -173,6 +175,7 @@ li {
   display: flex;
   width: 80%;
   justify-content: space-around;
+  font-size: 0.9em;
 }
 .comment-pic {
   width: 10px;
@@ -180,6 +183,8 @@ li {
 }
 .comment-text {
   margin-left: 10%;
+  margin-top: 20px;
+  font-size: 1.1em;
 }
 
 /* Troisième conteneur */

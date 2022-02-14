@@ -29,14 +29,13 @@ const Posts = ({ post }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [comment, setComment] = useState("");
   const [confirm, setConfirm] = useState(false);
-  const [commentNbr, setCommentNbr] = useState(0);
   const usersData = useSelector((state) => state.usersReducer);
   const userData = useSelector((state) => state.userReducer);
   const allComments = useSelector((state) => state.commentReducer);
   const dispatch = useDispatch();
   let userName = "";
   let hour = post.createdAt.substr(11, 2);
-  hour = parseInt(hour) + 1;
+  hour = parseInt(hour) <= 22 ? (hour = parseInt(hour) + 1):(hour = "00");
 
   useEffect(() => {
     !isEmpty(usersData[0]) && setIsLoading(false);
@@ -92,13 +91,11 @@ const Posts = ({ post }) => {
   const showNbrOfComments = () => {
     let nbrOfComments = [];
     for (let i = 0; i < allComments.length; i++) {
-      if (allComments[i].postId === post.id) {
-        nbrOfComments = allComments[i];
-        
-        
+      // eslint-disable-next-line eqeqeq
+      if (allComments[i].postId == post.id) {
+        nbrOfComments += allComments[i].id;
       }
     }
-    console.log(nbrOfComments);
     return nbrOfComments.length;
   };
 
@@ -154,7 +151,8 @@ const Posts = ({ post }) => {
             <div></div>
           )}
           <div className="comment-icon" onClick={toggleComment}>
-            {elementComments}{showNbrOfComments()}
+            {elementComments}
+            {showNbrOfComments()}
           </div>
           {isOpen ? (
             <>
