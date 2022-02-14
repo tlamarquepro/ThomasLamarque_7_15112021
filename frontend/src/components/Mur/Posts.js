@@ -10,7 +10,7 @@ import {
   faCommentAlt,
 } from "@fortawesome/free-solid-svg-icons";
 import { deletePost, getAllPosts } from "../../actions/post.actions";
-import { getAllComments } from "../../actions/comment.actions";
+import { addComment, getAllComments } from "../../actions/comment.actions";
 import Commentaire from "./Commentaire";
 
 // Icone spinner
@@ -26,8 +26,10 @@ const elementComments = <FontAwesomeIcon icon={faCommentAlt} />;
 
 const Posts = ({ post }) => {
   const [isLoading, setIsLoading] = useState(true);
-  const [isOpen, setIsOpen] = useState(true);
-  const [Confirm, setConfirm] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
+  const [comment, setComment] = useState("");
+  const [confirm, setConfirm] = useState(false);
+  const [commentNbr, setCommentNbr] = useState(0);
   const usersData = useSelector((state) => state.usersReducer);
   const userData = useSelector((state) => state.userReducer);
   const allComments = useSelector((state) => state.commentReducer);
@@ -71,8 +73,33 @@ const Posts = ({ post }) => {
     }
   };
 
-  const addComment = async () => {
-    dispatch(getAllComments);
+  const handleComment = async (e) => {
+    e.preventDefault();
+    console.log(comment);
+    if (comment) {
+      const data = {
+        commentBody: comment,
+        postId: post.id,
+        username: userData.username,
+      };
+      await dispatch(addComment(data));
+      dispatch(getAllComments());
+    } else {
+      alert("Veuillez entrer un message");
+    }
+  };
+
+  const showNbrOfComments = () => {
+    let nbrOfComments = [];
+    for (let i = 0; i < allComments.length; i++) {
+      if (allComments[i].postId === post.id) {
+        nbrOfComments = allComments[i];
+        
+        
+      }
+    }
+    console.log(nbrOfComments);
+    return nbrOfComments.length;
   };
 
   return (
@@ -113,7 +140,7 @@ const Posts = ({ post }) => {
               <div className="post-delete" onClick={showConfirm}>
                 {elementDelete}
               </div>
-              {Confirm ? (
+              {confirm ? (
                 <div className="post-confirm">
                   <label>Supprimer ?</label>
                   <button onClick={delPost}>Oui</button>
@@ -127,17 +154,39 @@ const Posts = ({ post }) => {
             <div></div>
           )}
           <div className="comment-icon" onClick={toggleComment}>
-            {elementComments}
+            {elementComments}{showNbrOfComments()}
           </div>
           {isOpen ? (
-            !isEmpty(allComments[0]) &&
-            allComments.map((comment) => {
-              return (
-                <Commentaire comment={comment} post={post} key={comment.id} />
-              );
-            })
+            <>
+              <div className="container-input">
+                <textarea
+                  className="input-comment"
+                  rows="2"
+                  cols="58"
+                  onChange={(e) => setComment(e.target.value)}
+                  value={comment}
+                ></textarea>
+                <button
+                  className="comment-button"
+                  onClick={handleComment}
+                  type="submit"
+                >
+                  Envoyer
+                </button>
+              </div>
+              {!isEmpty(allComments[0]) &&
+                allComments.map((comment) => {
+                  return (
+                    <Commentaire
+                      comment={comment}
+                      post={post}
+                      key={comment.id}
+                    />
+                  );
+                })}
+            </>
           ) : (
-            <div>no comment</div>
+            <div></div>
           )}
         </div>
       )}

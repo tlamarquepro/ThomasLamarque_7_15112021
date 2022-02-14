@@ -1,5 +1,5 @@
 /* eslint-disable eqeqeq */
-import React, { useEffect } from "react";
+import React from "react";
 import { useSelector } from "react-redux";
 
 const Commentaire = ({ comment, post }) => {
@@ -43,7 +43,7 @@ const Commentaire = ({ comment, post }) => {
               {hour + comment.createdAt.substr(13, 6)}
             </div>
           </div>
-          {comment.commentBody}
+          <div className="comment-text">{comment.commentBody}</div>
         </div>
       ) : (
         <div></div>

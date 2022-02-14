@@ -133,22 +133,41 @@ li {
 .post-delete {
   color: red;
   cursor: pointer;
-  text-align: right;
-}
-.comment-icon {
-  color: var(--secondary);
-  cursor: pointer;
-  text-align: right;
+  width: 12px;
+  margin-left: 98%;
+  position: absolute;
+  top: -6px;
 }
 .post-confirm {
   width: 50%;
   display: flex;
   justify-content: space-around;
 }
+.comment-icon {
+  color: var(--secondary);
+  cursor: pointer;
+  width: 10px;
+  margin-left: 98%;
+}
+.container-input {
+  display: flex;
+}
+.input-comment {
+  resize: none;
+  width: 70%;
+}
+.comment-button {
+  width: 20%;
+  height: 40px;
+}
 .post-comment {
   border: 1px black solid;
-  width: 100%;
+  width: 90%;
   margin-top: 10px;
+  padding: 5px;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  border-bottom-left-radius: 10px;
 }
 .comment-header {
   display: flex;
@@ -158,6 +177,9 @@ li {
 .comment-pic {
   width: 10px;
   height: 10px;
+}
+.comment-text {
+  margin-left: 10%;
 }
 
 /* Troisième conteneur */
