@@ -150,6 +150,15 @@ li {
   width: 100%;
   margin-top: 10px;
 }
+.comment-header {
+  display: flex;
+  width: 80%;
+  justify-content: space-around;
+}
+.comment-pic {
+  width: 10px;
+  height: 10px;
+}
 
 /* Troisième conteneur */
 .Auchoix2-container {

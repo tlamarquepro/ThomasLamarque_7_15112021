@@ -28,9 +28,20 @@ const Commentaire = ({ comment, post }) => {
       {comment.postId == post.id ? (
         <div className="post-comment">
           <div className="comment-header">
-            {commentUserLastname}
-            Le {comment.createdAt.substr(0, 10)} à{" "}
-            {hour + comment.createdAt.substr(13, 6)}
+            <img
+              src={`../uploads/profil/${commentUserPicture}`}
+              alt="profil"
+              className="post-profilePicture comment-pic"
+            />
+            <div>
+              {commentUserLastname} {commentUserFirstname}
+            </div>
+            <div></div>
+            <div>{commentUserJob}</div>
+            <div>
+              le {comment.createdAt.substr(0, 10)} à{" "}
+              {hour + comment.createdAt.substr(13, 6)}
+            </div>
           </div>
           {comment.commentBody}
         </div>
