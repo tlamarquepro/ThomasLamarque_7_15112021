@@ -51,6 +51,10 @@ li {
   color: var(--secondary);
 }
 /*Formulaire newpost*/
+.newpost-h1 {
+  color: var(--secondary);
+  text-align: center;
+}
 .newpost-title {
   width: 80%;
   margin: auto;
@@ -62,6 +66,15 @@ li {
   width: 80%;
   margin: auto;
   margin-bottom: 12px;
+  resize: none;
+}
+.input-addPicture, .input-button {
+  width: 60%;
+  margin: auto;
+}
+.input-button {
+  border: 1px var(--secondary) solid;
+  border-radius: 2px;
 }
 /*Les posts*/
 .post-container {
@@ -159,8 +172,10 @@ li {
   width: 70%;
 }
 .comment-button {
-  width: 20%;
-  height: 40px;
+  width: 12%;
+  height: 24px;
+  margin-left: 10px;
+  text-align: center;
 }
 .post-comment {
   border: 1px black solid;
