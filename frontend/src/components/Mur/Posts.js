@@ -93,10 +93,11 @@ const Posts = ({ post }) => {
     for (let i = 0; i < allComments.length; i++) {
       // eslint-disable-next-line eqeqeq
       if (allComments[i].postId == post.id) {
-        nbrOfComments += allComments[i].id;
+        nbrOfComments += allComments[i].unit;
       }
     }
-    return nbrOfComments.length;
+    console.log(nbrOfComments);
+    return nbrOfComments.length
   };
 
   return (
