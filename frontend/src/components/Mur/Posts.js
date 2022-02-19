@@ -96,7 +96,6 @@ const Posts = ({ post }) => {
         nbrOfComments += allComments[i].unit;
       }
     }
-    console.log(nbrOfComments);
     return nbrOfComments.length
   };
 
@@ -133,7 +132,7 @@ const Posts = ({ post }) => {
             Posté le {post.createdAt.substr(0, 10)} à{" "}
             {hour + post.createdAt.substr(13, 6)}
           </div>
-          {post.UserId === userData.id ? (
+          {parseInt(post.UserId) === userData.id || userData.role === "admin" ? (
             <>
               <div className="post-delete" onClick={showConfirm}>
                 {elementDelete}

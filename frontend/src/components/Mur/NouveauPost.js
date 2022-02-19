@@ -35,7 +35,6 @@ const NouveauPost = () => {
       data.append("username", userData.username);
       data.append("file", file);
       data.append("UserId", userData.id);
-      console.log(data);
       await dispatch(addPost(data));
       dispatch(getAllPosts());
     } else {

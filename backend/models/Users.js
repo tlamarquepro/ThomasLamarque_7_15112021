@@ -30,6 +30,11 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.STRING,
       allowNull: false,
     },
+    role: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      defaultValue: "simpleUser",
+    },
   });
 
   Users.associate = (models) => {
@@ -37,6 +42,6 @@ module.exports = (sequelize, DataTypes) => {
       onDelete: "cascade",
     });
   };
-  
+
   return Users;
 };

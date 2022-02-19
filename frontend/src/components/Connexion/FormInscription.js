@@ -74,15 +74,16 @@ const FormInscription = ({ functConnection }) => {
         .then((res) => {
           console.log(res);
           if (res.data === "Pseudo déjà pris !") {
-          } else {
-            removeText();
-          }
-          if (res.data.errors) {
+            alert("Pseudo déjà pris !");
+          } else if (res.data.errors) {
             lastnameError.innerHTML = res.data.errors.lastname;
             firstnameError.innerHTML = res.data.errors.firstname;
             jobError.innerHTML = res.data.errors.job;
             usernameError.innerHTML = res.data.errors.username;
             passwordError.innerHTML = res.data.errors.password;
+          } else {
+            removeText();
+            functConnection()
           }
         })
         .catch((err) => console.log(err));

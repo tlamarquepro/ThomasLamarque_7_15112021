@@ -54,6 +54,7 @@ li {
 .newpost-h1 {
   color: var(--secondary);
   text-align: center;
+  font-family: "Roboto", sans-serif;
 }
 .newpost-title {
   width: 80%;
@@ -61,20 +62,24 @@ li {
   margin-top: 10px;
   margin-bottom: 16px;
   text-align: center;
+  font-family: "Roboto", sans-serif;
 }
 .newpost-text {
   width: 80%;
   margin: auto;
   margin-bottom: 12px;
   resize: none;
+  font-family: "Roboto", sans-serif;
 }
 .input-addPicture, .input-button {
   width: 60%;
   margin: auto;
+  font-family: "Roboto", sans-serif;
 }
 .input-button {
   border: 1px var(--secondary) solid;
   border-radius: 2px;
+  font-family: "Roboto", sans-serif;
 }
 /*Les posts*/
 .post-container {
