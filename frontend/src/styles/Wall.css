@@ -71,7 +71,8 @@ li {
   resize: none;
   font-family: "Roboto", sans-serif;
 }
-.input-addPicture, .input-button {
+.input-addPicture,
+.input-button {
   width: 60%;
   margin: auto;
   font-family: "Roboto", sans-serif;
@@ -183,6 +184,7 @@ li {
   text-align: center;
 }
 .post-comment {
+  position: relative;
   border: 1px black solid;
   width: 90%;
   margin-top: 10px;
@@ -205,6 +207,14 @@ li {
   margin-left: 10%;
   margin-top: 20px;
   font-size: 1.1em;
+}
+.comment-delete {
+  color: red;
+  cursor: pointer;
+  width: 12px;
+  margin-left: 96%;
+  position: absolute;
+  bottom: 0px;
 }
 
 /* Troisième conteneur */

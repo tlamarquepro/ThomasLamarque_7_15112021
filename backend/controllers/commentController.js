@@ -25,19 +25,14 @@ module.exports.createComment = async (req, res) => {
 };
 
 module.exports.deleteComment = async (req, res) => {
-  const postId = req.params.id;
-  console.log(postId);
-  await Posts.destroy({
+  const commentId = req.params.id;
+  console.log(commentId);
+  await Comments.destroy({
     where: {
-      id: postId,
+      id: commentId,
     },
   });
 
   res.json("Suppression effectuée !");
 };
 
-module.exports.updateComment = async (req, res) => {
-  const { newTitle, id } = req.body;
-  await Posts.update({ title: newTitle }, { where: { id: id } });
-  res.json(newTitle);
-};

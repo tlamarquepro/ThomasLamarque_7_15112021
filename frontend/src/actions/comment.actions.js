@@ -20,8 +20,8 @@ export const addComment = (data) => {
   };
 };
 
-export const deleteComment = (postId) => {
+export const deleteComment = (commentId) => {
   return (dispatch) => {
-    return axios.delete(`${process.env.REACT_APP_URL_API}api/comments/byId/${postId}`);
+    return axios.delete(`${process.env.REACT_APP_URL_API}api/comments/byId/${commentId}`);
   };
 };

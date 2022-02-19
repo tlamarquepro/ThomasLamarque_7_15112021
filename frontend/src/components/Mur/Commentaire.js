@@ -1,11 +1,18 @@
 /* eslint-disable eqeqeq */
 import React from "react";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { faTrashAlt } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { deleteComment, getAllComments } from "../../actions/comment.actions";
+
+// Icone supression commentaire
+const elementDelete = <FontAwesomeIcon icon={faTrashAlt} />;
 
 const Commentaire = ({ comment, post }) => {
   const usersData = useSelector((state) => state.usersReducer);
+  const dispatch = useDispatch();
   let hour = comment.createdAt.substr(11, 2);
-  hour = parseInt(hour) <= 22 ? (hour = parseInt(hour) + 1):(hour = "00");
+  hour = parseInt(hour) <= 22 ? (hour = parseInt(hour) + 1) : (hour = "00");
   let commentUserLastname = "";
   let commentUserFirstname = "";
   let commentUserPicture = "";
@@ -23,6 +30,12 @@ const Commentaire = ({ comment, post }) => {
   };
 
   showCommentUser();
+
+  const delComment = async () => {
+    const postId = comment.id;
+    await dispatch(deleteComment(postId));
+    dispatch(getAllComments());
+  };
   return (
     <div>
       {comment.postId == post.id ? (
@@ -44,6 +57,9 @@ const Commentaire = ({ comment, post }) => {
             </div>
           </div>
           <div className="comment-text">{comment.commentBody}</div>
+          <div className="comment-delete" onClick={delComment}>
+            {elementDelete}
+          </div>
         </div>
       ) : (
         <div></div>
