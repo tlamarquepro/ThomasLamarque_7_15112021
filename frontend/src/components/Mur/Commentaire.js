@@ -1,5 +1,5 @@
 /* eslint-disable eqeqeq */
-import React from "react";
+import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { faTrashAlt } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -10,7 +10,9 @@ const elementDelete = <FontAwesomeIcon icon={faTrashAlt} />;
 
 const Commentaire = ({ comment, post }) => {
   const usersData = useSelector((state) => state.usersReducer);
+  const userData = useSelector((state) => state.userReducer);
   const dispatch = useDispatch();
+  const [confirm, setConfirm] = useState(false);
   let hour = comment.createdAt.substr(11, 2);
   hour = parseInt(hour) <= 22 ? (hour = parseInt(hour) + 1) : (hour = "00");
   let commentUserLastname = "";
@@ -30,6 +32,14 @@ const Commentaire = ({ comment, post }) => {
   };
 
   showCommentUser();
+
+  const showConfirm = () => {
+    setConfirm(true);
+  };
+
+  const delConfirm = () => {
+    setConfirm(false);
+  };
 
   const delComment = async () => {
     const postId = comment.id;
@@ -57,9 +67,25 @@ const Commentaire = ({ comment, post }) => {
             </div>
           </div>
           <div className="comment-text">{comment.commentBody}</div>
-          <div className="comment-delete" onClick={delComment}>
-            {elementDelete}
-          </div>
+          {comment.username === userData.username ||
+          userData.role === "admin" ? (
+            <>
+              <div className="comment-delete" onClick={showConfirm}>
+                {elementDelete}
+              </div>
+              {confirm ? (
+                <div className="post-confirm">
+                  <label>Supprimer le commentaire ?</label>
+                  <button onClick={delComment}>Oui</button>
+                  <button onClick={delConfirm}>Non</button>
+                </div>
+              ) : (
+                <div></div>
+              )}
+            </>
+          ) : (
+            <div></div>
+          )}
         </div>
       ) : (
         <div></div>
