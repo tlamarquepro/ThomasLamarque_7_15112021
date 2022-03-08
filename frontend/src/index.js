@@ -13,12 +13,14 @@ import thunk from "redux-thunk";
 import rootReducer from "./reducers";
 import { getUsers } from "./actions/users.actions";
 import { getAllComments } from "./actions/comment.actions";
+import { getAllLikes } from "./actions/like.actions";
 const store = createStore(
   rootReducer,
   composeWithDevTools(applyMiddleware(thunk))
 );
 store.dispatch(getUsers());
 store.dispatch(getAllComments());
+store.dispatch(getAllLikes())
 
 ReactDOM.render(
   <Provider store={store}>

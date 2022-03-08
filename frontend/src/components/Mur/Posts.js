@@ -12,6 +12,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { deletePost, getAllPosts } from "../../actions/post.actions";
 import { addComment, getAllComments } from "../../actions/comment.actions";
+import { addAndDeleteLike, getAllLikes } from "../../actions/like.actions";
 import Commentaire from "./Commentaire";
 
 // Icone spinner

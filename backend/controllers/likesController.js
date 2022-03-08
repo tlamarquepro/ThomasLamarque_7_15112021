@@ -1,7 +1,7 @@
 const { Likes } = require("../models");
 
 
-module.exports.getAllComments = async (req, res) => {
+module.exports.getAllLikes = async (req, res) => {
   const listOfLikes = await Likes.findAll();
   res.json(listOfLikes);
 };
