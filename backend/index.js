@@ -36,10 +36,12 @@ app.get("/jwtid", requireAuth, (req, res) => {
 const postRouter = require("./routes/Posts");
 const usersRouter = require("./routes/Users");
 const commentRouter = require("./routes/Comments");
+const likesRouter = require("./routes/Likes");
 
 app.use("/api/posts", postRouter);
 app.use("/api/users", usersRouter);
 app.use("/api/comments", commentRouter);
+app.use("/api/likes", likesRouter);
 
 db.sequelize.sync().then(() => {
   app.listen(3001, () => {

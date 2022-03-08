@@ -1,7 +1,4 @@
 const { Comments } = require("../models");
-const fs = require("fs");
-const { promisify } = require("util");
-const pipeline = promisify(require("stream").pipeline);
 
 module.exports.getAllComments = async (req, res) => {
   const listOfComments = await Comments.findAll();

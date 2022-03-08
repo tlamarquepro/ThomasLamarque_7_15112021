@@ -35,7 +35,7 @@ const Posts = ({ post }) => {
   const dispatch = useDispatch();
   let userName = "";
   let hour = post.createdAt.substr(11, 2);
-  hour = parseInt(hour) <= 22 ? (hour = parseInt(hour) + 1):(hour = "00");
+  hour = parseInt(hour) <= 22 ? (hour = parseInt(hour) + 1) : (hour = "00");
 
   useEffect(() => {
     !isEmpty(usersData[0]) && setIsLoading(false);
@@ -81,6 +81,7 @@ const Posts = ({ post }) => {
         postId: post.id,
         username: userData.username,
       };
+      console.log(data);
       await dispatch(addComment(data));
       dispatch(getAllComments());
     } else {
@@ -91,12 +92,11 @@ const Posts = ({ post }) => {
   const showNbrOfComments = () => {
     let nbrOfComments = [];
     for (let i = 0; i < allComments.length; i++) {
-      // eslint-disable-next-line eqeqeq
-      if (allComments[i].postId == post.id) {
+      if (parseInt(allComments[i].postId) === post.id) {
         nbrOfComments += allComments[i].unit;
       }
     }
-    return nbrOfComments.length
+    return nbrOfComments.length;
   };
 
   return (
@@ -132,7 +132,8 @@ const Posts = ({ post }) => {
             Posté le {post.createdAt.substr(0, 10)} à{" "}
             {hour + post.createdAt.substr(13, 6)}
           </div>
-          {parseInt(post.UserId) === userData.id || userData.role === "admin" ? (
+          {parseInt(post.UserId) === userData.id ||
+          userData.role === "admin" ? (
             <>
               <div className="post-delete" onClick={showConfirm}>
                 {elementDelete}

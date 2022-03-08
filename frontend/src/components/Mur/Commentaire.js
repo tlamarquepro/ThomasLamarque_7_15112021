@@ -1,4 +1,3 @@
-/* eslint-disable eqeqeq */
 import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { faTrashAlt } from "@fortawesome/free-solid-svg-icons";
@@ -48,7 +47,7 @@ const Commentaire = ({ comment, post }) => {
   };
   return (
     <div>
-      {comment.postId == post.id ? (
+      {parseInt(comment.postId) === post.id ? (
         <div className="post-comment">
           <div className="comment-header">
             <img
