@@ -8,6 +8,7 @@ import {
   faSyncAlt,
   faTrashAlt,
   faCommentAlt,
+  faThumbsUp,
 } from "@fortawesome/free-solid-svg-icons";
 import { deletePost, getAllPosts } from "../../actions/post.actions";
 import { addComment, getAllComments } from "../../actions/comment.actions";
@@ -21,8 +22,11 @@ const elementSpinner = (
 // Icone supression post
 const elementDelete = <FontAwesomeIcon icon={faTrashAlt} />;
 
-// Icone supression post
+// Icone commentaires
 const elementComments = <FontAwesomeIcon icon={faCommentAlt} />;
+
+// Icone supression post
+const elementLike = <FontAwesomeIcon icon={faThumbsUp} />;
 
 const Posts = ({ post }) => {
   const [isLoading, setIsLoading] = useState(true);
@@ -32,6 +36,7 @@ const Posts = ({ post }) => {
   const usersData = useSelector((state) => state.usersReducer);
   const userData = useSelector((state) => state.userReducer);
   const allComments = useSelector((state) => state.commentReducer);
+  const allLikes = useSelector((state) => state.likeReducer);
   const dispatch = useDispatch();
   let userName = "";
   let hour = post.createdAt.substr(11, 2);
@@ -99,6 +104,20 @@ const Posts = ({ post }) => {
     return nbrOfComments.length;
   };
 
+  const addLike = () => {
+    console.log(allLikes);
+  };
+
+  const showNbrOfLikes = () => {
+    let nbrOfLikes = [];
+    for (let i = 0; i < allLikes.length; i++) {
+      if (parseInt(allLikes[i].PostId) === post.id) {
+        nbrOfLikes += allComments[i].unit;
+      }
+    }
+    return nbrOfLikes.length;
+  };
+
   return (
     <li className="allPosts-container border">
       {isLoading ? (
@@ -151,9 +170,15 @@ const Posts = ({ post }) => {
           ) : (
             <div></div>
           )}
-          <div className="comment-icon" onClick={toggleComment}>
-            {elementComments}
-            {showNbrOfComments()}
+          <div className="ctnr-likes-comments">
+            <div className="comment-likes" onClick={addLike}>
+              {elementLike}
+              {showNbrOfLikes()}
+            </div>
+            <div className="comment-icon" onClick={toggleComment}>
+              {elementComments}
+              {showNbrOfComments()}
+            </div>
           </div>
           {isOpen ? (
             <>
