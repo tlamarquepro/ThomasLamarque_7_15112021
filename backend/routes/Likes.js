@@ -4,6 +4,6 @@ const { checkUser } = require("../middlewares/AuthMiddleware");
 const likesController = require("../controllers/likesController");
 
 router.get("/", likesController.getAllLikes)
-router.post("/", checkUser, likesController.likeAPost);
+router.post("/", likesController.likeAPost);
 
 module.exports = router;

@@ -105,15 +105,20 @@ const Posts = ({ post }) => {
     return nbrOfComments.length;
   };
 
-  const addLike = () => {
-    console.log(allLikes);
+  const addLike = async () => {
+    const data = {
+      PostId : post.id,
+      UserId : userData.id
+    }
+    await dispatch(addAndDeleteLike(data));
+    dispatch(getAllLikes());
   };
 
   const showNbrOfLikes = () => {
     let nbrOfLikes = [];
     for (let i = 0; i < allLikes.length; i++) {
       if (parseInt(allLikes[i].PostId) === post.id) {
-        nbrOfLikes += allComments[i].unit;
+        nbrOfLikes += allLikes[i].unit;
       }
     }
     return nbrOfLikes.length;

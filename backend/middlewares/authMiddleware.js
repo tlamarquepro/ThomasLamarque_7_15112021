@@ -3,6 +3,7 @@ const { Users } = require("../models");
 
 module.exports.checkUser = (req, res, next) => {
   const token = req.cookies.jwt;
+  console.log(token);
   if (token) {
     jwt.verify(token, process.env.TOKEN_SECRET, async (err, decodedToken) => {
       if (err) {
@@ -32,6 +33,26 @@ module.exports.requireAuth = (req, res, next) => {
       }
     });
   } else {
-    console.log('Pas de token !');
+    console.log("Pas de token !");
+  }
+};
+
+module.exports.checkUserForLikes = (req, res, next) => {
+  const token = res.cookies.jwt;
+  
+  if (token) {
+    jwt.verify(token, process.env.TOKEN_SECRET, async (err, decodedToken) => {
+      if (err) {
+        res.locals.user = null;
+        next();
+      } else {
+        let user = await Users.findByPk(decodedToken.id);
+        res.locals.user = user;
+        next();
+      }
+    });
+  } else {
+    res.locals.user = null;
+    next();
   }
 };
