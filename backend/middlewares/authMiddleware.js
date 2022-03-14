@@ -36,23 +36,3 @@ module.exports.requireAuth = (req, res, next) => {
     console.log("Pas de token !");
   }
 };
-
-module.exports.checkUserForLikes = (req, res, next) => {
-  const token = res.cookies.jwt;
-  
-  if (token) {
-    jwt.verify(token, process.env.TOKEN_SECRET, async (err, decodedToken) => {
-      if (err) {
-        res.locals.user = null;
-        next();
-      } else {
-        let user = await Users.findByPk(decodedToken.id);
-        res.locals.user = user;
-        next();
-      }
-    });
-  } else {
-    res.locals.user = null;
-    next();
-  }
-};
