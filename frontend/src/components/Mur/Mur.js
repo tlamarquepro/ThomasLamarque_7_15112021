@@ -4,7 +4,7 @@ import React, { useContext, useState, useEffect } from "react";
 import Navigation from "../Nav";
 import Accueil from "../Connexion/Accueil";
 import Auchoix1 from "../Mur/Auchoix1";
-import Auchoix2 from "../Mur/Auchoix2";
+import ListeInscrits from "../Mur/ListeInscrits";
 import NouveauPost from "../Mur/NouveauPost";
 import Posts from "../Mur/Posts";
 
@@ -51,7 +51,7 @@ const Mur = () => {
                   })}
               </ul>
             </div>
-            <Auchoix2 />
+            <ListeInscrits />
           </div>
         </div>
       ) : (

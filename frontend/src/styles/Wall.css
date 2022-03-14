@@ -165,7 +165,7 @@ li {
 }
 .ctnr-likes-comments {
   display: flex;
-  margin-left: 88%;
+  margin-left: 86%;
   width: 50px;
 }
 .comment-likes {
@@ -231,8 +231,15 @@ li {
 }
 
 /* Troisième conteneur */
-.Auchoix2-container {
+.listOfUsers-container {
   background-color: white;
   width: 22%;
   height: 500px;
+}
+.userslist-ctnr {
+  display: flex;
+  margin-left: 10px;
+  font-size: 1.2em;
+  margin-bottom: 20px;
+  margin-top: 10px;
 }
