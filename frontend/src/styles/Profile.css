@@ -83,3 +83,6 @@
 .btn-addPicture:hover {
   transform: scale(101%);
 }
+.btn-bio {
+  width: 10%;
+}

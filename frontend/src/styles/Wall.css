@@ -234,12 +234,12 @@ li {
 .listOfUsers-container {
   background-color: white;
   width: 22%;
-  height: 500px;
+  height: 100%;
 }
 .userslist-ctnr {
   display: flex;
   margin-left: 10px;
-  font-size: 1.2em;
-  margin-bottom: 20px;
+  font-size: 1.1em;
+  margin-bottom: 10px;
   margin-top: 10px;
 }

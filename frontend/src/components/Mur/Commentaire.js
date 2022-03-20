@@ -41,13 +41,13 @@ const Commentaire = ({ comment, post }) => {
   };
 
   const delComment = async () => {
-    const postId = comment.id;
-    await dispatch(deleteComment(postId));
+    const commentId = comment.id;
+    await dispatch(deleteComment(commentId));
     dispatch(getAllComments());
   };
   return (
     <div>
-      {parseInt(comment.postId) === post.id ? (
+      {parseInt(comment.PostId) === post.id ? (
         <div className="post-comment">
           <div className="comment-header">
             <img

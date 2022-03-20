@@ -31,13 +31,12 @@ module.exports.updateUser = async (req, res) => {
       error: "Utilisateur non trouvé !",
     });
   } else {
-    const { lastname, firstname, job, username, password } = req.body;
+    const { lastname, firstname, job, username} = req.body;
     user.update({
       lastname: lastname,
       firstname: firstname,
       job: job,
       username: username,
-      password: password,
     });
     res.status(200).json({ message: "Modification effectuée !" });
   }

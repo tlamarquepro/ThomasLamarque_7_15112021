@@ -12,9 +12,9 @@ module.exports.getCommentById = async (req, res) => {
 };
 
 module.exports.createComment = async (req, res) => {
-  const { postId, commentBody, username } = req.body;
+  const { PostId, commentBody, username } = req.body;
   await Comments.create({
-    postId: postId,
+    PostId: PostId,
     commentBody: commentBody,
     username: username,
   });
@@ -32,4 +32,3 @@ module.exports.deleteComment = async (req, res) => {
 
   res.json("Suppression effectuée !");
 };
-
