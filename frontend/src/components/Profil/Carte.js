@@ -14,6 +14,7 @@ const Carte = () => {
   const userData = useSelector((state) => state.userReducer);
   const [update, setUpdate] = useState(false);
   const [confirm, setConfirm] = useState(true);
+  const [bio, setBio] = useState("");
   const dispatch = useDispatch();
 
   const updateBio = () => {
@@ -24,7 +25,23 @@ const Carte = () => {
     }
   };
 
-  const handleBio = () => {};
+  const handleBio = async (e) => {
+    e.preventDefault();
+    console.log(comment);
+    if (comment) {
+      const data = {
+        commentBody: comment,
+        UserId: userData.id,
+        PostId: post.id,
+        username: userData.username,
+      };
+      console.log(data);
+      await dispatch(addComment(data));
+      dispatch(getAllComments());
+    } else {
+      alert("Veuillez entrer un message");
+    }
+  };
 
   const showConfirm = () => {
     setConfirm(false);
@@ -68,7 +85,11 @@ const Carte = () => {
       <div className="profile-bio">
         <div className="label">Biographie :</div>
         <div className="bio">
-          {update ? <textarea className="" onClick={handleBio}></textarea> : userData.bio}
+          {update ? (
+            <textarea className="text-bio" onClick={handleBio}></textarea>
+          ) : (
+            userData.bio
+          )}
         </div>
         <button className="btn-bio" onClick={updateBio}>
           Modifier ma biographie

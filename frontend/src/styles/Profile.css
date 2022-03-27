@@ -88,6 +88,10 @@
   height: 40px;
   cursor: pointer;
 }
+.text-bio {
+  resize: none;
+  width: 100%;
+}
 .btn-delaccount {
   border: 1px red solid;
   background-color: grey;
