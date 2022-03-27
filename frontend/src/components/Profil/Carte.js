@@ -6,6 +6,8 @@ import { getAllComments } from "../../actions/comment.actions";
 import { getUsers } from "../../actions/users.actions";
 import "../../styles/Profile.css";
 import FormImg from "./FormImg";
+import { updateUser } from "../../actions/users.actions";
+import { getUser } from "../../actions/user.actions";
 
 // Url API dotenv
 const urlAPI = process.env.REACT_APP_URL_API;
@@ -27,17 +29,17 @@ const Carte = () => {
 
   const handleBio = async (e) => {
     e.preventDefault();
-    console.log(comment);
-    if (comment) {
+    console.log(bio);
+    if (bio) {
+      const id = userData.id;
       const data = {
-        commentBody: comment,
-        UserId: userData.id,
-        PostId: post.id,
-        username: userData.username,
+        bio: bio,
       };
       console.log(data);
-      await dispatch(addComment(data));
-      dispatch(getAllComments());
+      await dispatch(updateUser(data, id));
+      dispatch(getUsers());
+      dispatch(getUser(id));
+      setUpdate(false);
     } else {
       alert("Veuillez entrer un message");
     }
@@ -86,14 +88,24 @@ const Carte = () => {
         <div className="label">Biographie :</div>
         <div className="bio">
           {update ? (
-            <textarea className="text-bio" onClick={handleBio}></textarea>
+            <textarea
+              className="text-bio"
+              onChange={(e) => setBio(e.target.value)}
+              value={bio}
+            ></textarea>
           ) : (
             userData.bio
           )}
         </div>
-        <button className="btn-bio" onClick={updateBio}>
-          Modifier ma biographie
-        </button>
+        {update ? (
+          <button className="btn-bio" onClick={handleBio}>
+            Valider
+          </button>
+        ) : (
+          <button className="btn-bio" onClick={updateBio}>
+            Modifier ma biographie
+          </button>
+        )}
       </div>
       {confirm ? (
         <button className="btn-delaccount" onClick={showConfirm}>
