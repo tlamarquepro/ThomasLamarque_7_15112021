@@ -13,3 +13,9 @@ export const getUsers = () => {
       .catch((err) => console.log(err));
   };
 };
+
+export const deleteUser = (userId) => {
+  return (dispatch) => {
+    return axios.delete(`${process.env.REACT_APP_URL_API}api/users/${userId}`);
+  };
+};

@@ -84,6 +84,7 @@ const Posts = ({ post }) => {
     if (comment) {
       const data = {
         commentBody: comment,
+        UserId: userData.id,
         PostId: post.id,
         username: userData.username,
       };

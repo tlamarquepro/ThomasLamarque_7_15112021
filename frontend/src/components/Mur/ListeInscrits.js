@@ -10,7 +10,7 @@ const ListeInscrits = () => {
       {!isEmpty(usersData[0]) &&
         usersData.map((user) => {
           return (
-            <><div className="userslist-ctnr">
+            <><div key={user.id} className="userslist-ctnr">
               <div className="user-pic">
                 <img
                   src={`../uploads/profil/${user.picture}`}
