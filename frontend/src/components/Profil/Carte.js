@@ -38,8 +38,8 @@ const Carte = () => {
       console.log(data);
       await dispatch(updateUser(data, id));
       dispatch(getUsers());
-      dispatch(getUser(id));
-      setUpdate(false);
+      await dispatch(getUser(id));
+      await setUpdate(false);
     } else {
       alert("Veuillez entrer un message");
     }
