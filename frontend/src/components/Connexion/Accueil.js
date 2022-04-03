@@ -1,5 +1,7 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
+import { useSelector } from "react-redux";
 import "../../styles/Accueil.css";
+import { UidContext } from "../AppContext";
 import Connexion from "../Connexion/Connexion";
 
 const Accueil = () => {

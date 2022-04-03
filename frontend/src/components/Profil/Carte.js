@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
 import { getAllPosts } from "../../actions/post.actions";
@@ -19,6 +19,8 @@ const Carte = () => {
   const [bio, setBio] = useState("");
   const dispatch = useDispatch();
 
+  
+
   const updateBio = () => {
     if (update) {
       setUpdate(false);
@@ -27,22 +29,23 @@ const Carte = () => {
     }
   };
 
-  const handleBio = async (e) => {
+  const handleBio = (e) => {
     e.preventDefault();
     console.log(bio);
+    const id = userData.id;
     if (bio) {
-      const id = userData.id;
       const data = {
         bio: bio,
       };
       console.log(data);
-      await dispatch(updateUser(data, id));
-      dispatch(getUsers());
-      await dispatch(getUser(id));
-      await setUpdate(false);
+      dispatch(updateUser(data, id));
+      setUpdate(false);
     } else {
       alert("Veuillez entrer un message");
     }
+    setBio(bio);
+    dispatch(getUser(id));
+    window.location = "/profile";
   };
 
   const showConfirm = () => {
