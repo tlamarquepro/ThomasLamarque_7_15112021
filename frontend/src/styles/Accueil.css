@@ -343,5 +343,18 @@ a {
   transform: translateX(-50%);
   z-index: 1;
 }
+.ctnr-error {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  width: 50%;
+  height: 100px;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  position: absolute;
+  text-align: center;
+  font-family: "Roboto", sans-serif;
+}
 * {
 }

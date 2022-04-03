@@ -1,10 +1,13 @@
 import React from 'react';
+import Navigation from '../Nav';
 
 const Erreur = () => {
     return (
-        <div>
-            Désolé ! La page que vous rechercher est introuvable !
-        </div>
+        <><Navigation />
+        <div className='ctnr-error'>
+            <h1>Désolé !</h1> 
+            <h2>La page que vous recherchez est introuvable.</h2>
+        </div></>
     );
 };
 
