@@ -17,6 +17,15 @@
   background-color: white;
   width: 28%;
   height: 500px;
+  font-family: "Roboto", sans-serif;
+}
+.bio-title {
+  width: 80%;
+  margin: auto;
+  margin-top: 10px;
+  margin-bottom: 16px;
+  text-align: center;
+  font-family: "Roboto", sans-serif;
 }
 
 /* Deuxième conteneur (posts)*/

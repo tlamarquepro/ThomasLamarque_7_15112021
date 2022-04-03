@@ -10,7 +10,7 @@ const ListeInscrits = ({ bio, setBio }) => {
     setBio(userId);
   };
   return (
-    <div className={"listOfUsers-container border"}>
+    <div className="listOfUsers-container border">
       <h1 className="newpost-h1">Inscrits !</h1>
       <ul>
         {!isEmpty(usersData[0]) &&
