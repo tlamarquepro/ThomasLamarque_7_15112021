@@ -3,7 +3,7 @@ import React, { useContext, useState, useEffect } from "react";
 //
 import Navigation from "../Nav";
 import Accueil from "../Connexion/Accueil";
-import Auchoix1 from "../Mur/Auchoix1";
+import Auchoix1 from "./Bio";
 import ListeInscrits from "../Mur/ListeInscrits";
 import NouveauPost from "../Mur/NouveauPost";
 import Posts from "../Mur/Posts";
@@ -19,6 +19,7 @@ import { isEmpty } from "../Utils";
 
 const Mur = () => {
   const uid = useContext(UidContext);
+  const [bio, setBio] = useState()
 
   // Dispatch des posts dans le store
   const [loadPost, setLoadPosts] = useState(true);
@@ -41,7 +42,7 @@ const Mur = () => {
             className="backLogo"
           />
           <div className="wall-container">
-            <Auchoix1 />
+            <Auchoix1 bio={bio} setBio={setBio} />
             <div className="posts-container">
               <NouveauPost />
               <ul>
@@ -51,7 +52,7 @@ const Mur = () => {
                   })}
               </ul>
             </div>
-            <ListeInscrits />
+            <ListeInscrits bio={bio} setBio={setBio}/>
           </div>
         </div>
       ) : (
