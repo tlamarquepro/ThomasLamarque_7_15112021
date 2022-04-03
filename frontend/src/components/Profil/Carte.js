@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
 import { getAllPosts } from "../../actions/post.actions";
@@ -18,8 +18,6 @@ const Carte = () => {
   const [confirm, setConfirm] = useState(true);
   const [bio, setBio] = useState("");
   const dispatch = useDispatch();
-
-  
 
   const updateBio = () => {
     if (update) {

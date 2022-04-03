@@ -10,6 +10,7 @@ import Mur from "./Mur/Mur";
 import Profil from "./Profil/Profil";
 import { UidContext } from "./AppContext";
 import { getUser } from "../actions/user.actions";
+import Erreur from "./Erreur/Erreur";
 
 // Url API dotenv
 const urlAPI = process.env.REACT_APP_URL_API;
@@ -17,7 +18,6 @@ const urlAPI = process.env.REACT_APP_URL_API;
 function App() {
   // Maintenir la connexion
   const [uid, setUid] = useState(null);
-  console.log(uid);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -44,6 +44,7 @@ function App() {
             <Route path="/" element={!uid ? <Accueil /> : <Mur />} />
             <Route path="/wall" element={<Mur />} />
             <Route path="/profile" element={<Profil />} />
+            <Route path="/error" element={<Erreur />} />
           </Routes>
         </Router>
       </UidContext.Provider>
