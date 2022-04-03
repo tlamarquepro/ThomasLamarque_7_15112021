@@ -7,21 +7,27 @@ const ListeInscrits = () => {
   return (
     <div className={"listOfUsers-container border"}>
       <h1 className="newpost-h1">Inscrits !</h1>
-      {!isEmpty(usersData[0]) &&
-        usersData.map((user) => {
-          return (
-            <><div key={user.id} className="userslist-ctnr">
-              <div className="user-pic">
-                <img
-                  src={`../uploads/profil/${user.picture}`}
-                  alt="profil"
-                  className="post-profilePicture"
-                />
-              </div>
-              <div className="user-name">{user.lastname + " " + user.firstname}</div></div>
-            </>
-          );
-        })}
+      <ul>
+        {!isEmpty(usersData[0]) &&
+          usersData.map((user) => {
+            return (
+              <li key={user.id}>
+                <div className="userslist-ctnr">
+                  <div className="user-pic">
+                    <img
+                      src={`../uploads/profil/${user.picture}`}
+                      alt="profil"
+                      className="post-profilePicture"
+                    />
+                  </div>
+                  <div className="user-name">
+                    {user.lastname + " " + user.firstname}
+                  </div>
+                </div>
+              </li>
+            );
+          })}
+      </ul>
     </div>
   );
 };
