@@ -18,6 +18,7 @@ const ListeInscrits = ({ bio, setBio }) => {
             return (
               <li
                 key={user.id}
+                className="each"
                 onClick={() => {
                   showBio(user.id);
                 }}

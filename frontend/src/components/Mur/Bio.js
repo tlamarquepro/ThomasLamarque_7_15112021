@@ -2,6 +2,7 @@ import React from "react";
 import { useSelector } from "react-redux";
 
 const Bio = ({ bio }) => {
+
   const usersData = useSelector((state) => state.usersReducer);
   const userData = useSelector((state) => state.userReducer);
 
@@ -11,7 +12,6 @@ const Bio = ({ bio }) => {
   let myPic = "";
 
   const showBio = (bio) => {
-    console.log(bio);
     for (let i = 0; i < usersData.length; i++) {
       if (usersData[i].id === bio) {
         myBio = usersData[i].bio;
@@ -35,13 +35,13 @@ const Bio = ({ bio }) => {
         <img
           src={`../uploads/profil/${myPic}`}
           alt="profil"
-          className="picture"
+          className="picture-bio"
         />
       ) : (
         <img
           src={`../uploads/profil/${userData.picture}`}
           alt="profil"
-          className="picture"
+          className="picture-bio"
         />
       )}
       <h3 className="bio-title">
